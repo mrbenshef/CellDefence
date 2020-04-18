@@ -2,3 +2,18 @@
 
 - Test with xbox controller
 - Remove cheats
+
+- Inventory system for buying turrets
+- Wall/sheild, while placing rotate towards player
+- Flame thrower turret
+- Tripple shot upgrade
+- Piercing bullet upgrade
+- Speed boost upgrade
+- Build arena
+- Add mitocondria shops
+- Add virus "ships"
+- Game loop
+    - virus's land
+    - 30 seconds to prepare
+    - round begins
+    - next round, increase difficulty
