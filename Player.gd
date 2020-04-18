@@ -21,6 +21,8 @@ export var ROTATION_SMOOTHING : float = 0.1
 export (Texture) var TurretTexture : Texture
 
 onready var Gun : Position2D = $Gun
+onready var nucleaus_position = get_parent().get_node("Nucleaus").global_position
+onready var HUD = get_parent().get_node("HUD")
 
 var state = FLYING
 var velocity : Vector2 = Vector2.ZERO
@@ -84,15 +86,32 @@ func set_held_item(idx):
 	state = PLACING
 
 func _process(delta):
+	HUD.set_tooltip("", false)
+	
 	if !input_enabled:
 		return
 		
 	var mouse_pos = get_local_mouse_position()
+	var is_valid_placement_position : bool = false
 		
 	# Move held item to mouse position
 	if held_item != null:
 		held_item.position = mouse_pos
 		(held_item as Node2D).global_rotation = 0
+		
+		# Check if we are in a valid spot
+		var too_close_to_nucleaus = (get_global_mouse_position() - nucleaus_position).length() < 300
+		if too_close_to_nucleaus:
+			HUD.set_tooltip("to close to nucleaus!", true)
+		is_valid_placement_position = !too_close_to_nucleaus
+		
+		# Color green/red
+		var held_sprite : Sprite = held_item.get_child(0)
+		if is_valid_placement_position:
+			held_sprite.modulate = Color(0.0, 1.0, 0.0, 0.5)
+		else:
+			held_sprite.modulate = Color(1.0, 0.0, 0.0, 0.5)
+			
 		
 	# Select inventory item
 	for i in range(9):
@@ -108,7 +127,7 @@ func _process(delta):
 			FLYING:
 				emit_signal("shoot_bullet", Gun.global_position, rotation)
 			PLACING:
-				if held_item == null:
+				if held_item == null || !is_valid_placement_position:
 					return
 				print("placing turret")
 				emit_signal("place_turret", get_global_mouse_position(), 0)

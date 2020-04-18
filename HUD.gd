@@ -4,6 +4,10 @@ signal nucleaus_store_heal
 
 func _ready():
 	$NucleausHUD.visible = false
+	$TooltipLabel.visible = false
+
+func _process(delta):
+	$TooltipLabel.rect_position = get_viewport().get_mouse_position() + Vector2(10, 10)
 
 func set_protein_score(score):
 	$ProteinScore.text = "Protein Points: " + str(score)
@@ -17,6 +21,9 @@ func in_menu():
 func _on_HealButton_pressed():
 	emit_signal("nucleaus_store_heal")
 
+func set_tooltip(text, visible):
+	$TooltipLabel.text = text
+	$TooltipLabel.visible = visible
 
 func _on_Player_inventory_update(inventory):
 	var inventory_string : String = "Inventory:"
