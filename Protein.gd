@@ -20,3 +20,4 @@ func _physics_process(delta):
 
 func set_target(new_target):
 	target = new_target
+	$CollisionShape2D.disabled = true

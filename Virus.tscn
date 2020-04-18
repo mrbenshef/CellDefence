@@ -10,7 +10,7 @@ script = ExtResource( 2 )
 position = Vector2( 0, -36.9305 )
 texture = ExtResource( 1 )
 
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 0.0126762, 21.0883 )
+[node name="Spawn" type="Position2D" parent="."]
+position = Vector2( 0, 22.5872 )
 
 [node name="Tween" type="Tween" parent="."]

@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Wall.tscn" type="PackedScene" id=4]
 [ext_resource path="res://DNA.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Nucleaus.tscn" type="PackedScene" id=6]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=7]
@@ -20,26 +19,6 @@ VIRUS = ExtResource( 10 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 306.267, -115.677 )
-
-[node name="Walls" type="Node2D" parent="."]
-
-[node name="Wall" parent="Walls" instance=ExtResource( 4 )]
-position = Vector2( 227.999, 102.167 )
-
-[node name="Wall2" parent="Walls" instance=ExtResource( 4 )]
-position = Vector2( 260.061, 102.167 )
-
-[node name="Wall3" parent="Walls" instance=ExtResource( 4 )]
-position = Vector2( 288, 102.167 )
-
-[node name="Wall6" parent="Walls" instance=ExtResource( 4 )]
-position = Vector2( 320, 102.167 )
-
-[node name="Wall5" parent="Walls" instance=ExtResource( 4 )]
-position = Vector2( 352.062, 102.167 )
-
-[node name="Wall4" parent="Walls" instance=ExtResource( 4 )]
-position = Vector2( 380.001, 102.167 )
 
 [node name="SpawnPoint" type="Position2D" parent="."]
 position = Vector2( 102.005, 94.5391 )
@@ -89,6 +68,12 @@ scale = Vector2( 1, 1 )
 __meta__ = {
 "_gizmo_extents_": 78.0
 }
+
+[node name="PreperationTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="DNAs" type="Node2D" parent="."]
 [connection signal="inventory_update" from="Player" to="HUD" method="_on_Player_inventory_update"]
 [connection signal="place_turret" from="Player" to="." method="_on_Player_place_turret"]
 [connection signal="protein_pickup" from="Player" to="." method="_on_Player_protein_pickup"]
@@ -96,3 +81,4 @@ __meta__ = {
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="open_nucleaus_shop" from="Nucleaus" to="." method="_on_Nucleaus_open_nucleaus_shop"]
 [connection signal="nucleaus_store_heal" from="HUD" to="." method="_on_HUD_nucleaus_store_heal"]
+[connection signal="timeout" from="PreperationTimer" to="." method="_on_PreperationTimer_timeout"]

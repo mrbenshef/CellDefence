@@ -24,6 +24,15 @@ __meta__ = {
 }
 
 [node name="NucleausHUD" parent="." instance=ExtResource( 2 )]
+
+[node name="StatusLabel" type="Label" parent="."]
+margin_top = 16.7739
+margin_right = 106.0
+margin_bottom = 30.7739
+text = "Status"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="NucleausHUD/HealButton" to="." method="_on_HealButton_pressed"]
 
 [editable path="NucleausHUD"]
