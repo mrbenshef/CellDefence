@@ -16,3 +16,10 @@ func in_menu():
 
 func _on_HealButton_pressed():
 	emit_signal("nucleaus_store_heal")
+
+
+func _on_Player_inventory_update(inventory):
+	var inventory_string : String = "Inventory:"
+	for i in range(inventory.size()):
+		inventory_string += "\n" + inventory[i]
+	$InventoryLabel.text = inventory_string

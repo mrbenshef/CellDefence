@@ -16,7 +16,7 @@ DNA = ExtResource( 5 )
 TURRET = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 304, 196 )
+position = Vector2( 300, 180 )
 
 [node name="Walls" type="Node2D" parent="."]
 
@@ -49,6 +49,7 @@ autostart = true
 position = Vector2( 437.078, 281.406 )
 
 [node name="HUD" parent="." instance=ExtResource( 7 )]
+[connection signal="inventory_update" from="Player" to="HUD" method="_on_Player_inventory_update"]
 [connection signal="place_turret" from="Player" to="." method="_on_Player_place_turret"]
 [connection signal="protein_pickup" from="Player" to="." method="_on_Player_protein_pickup"]
 [connection signal="shoot_bullet" from="Player" to="." method="_on_Player_shoot_bullet"]

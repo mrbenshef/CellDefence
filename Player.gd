@@ -3,6 +3,7 @@ extends KinematicBody2D
 signal shoot_bullet
 signal protein_pickup
 signal place_turret
+signal inventory_update
 
 enum {
 	FLYING
@@ -24,7 +25,63 @@ onready var Gun : Position2D = $Gun
 var state = FLYING
 var velocity : Vector2 = Vector2.ZERO
 var input_enabled : bool = true
+
 var held_item = null
+var held_item_idx : int = -1
+var inventory : Array = []
+
+func _ready():
+	for _i in range(9):
+		inventory.append("empty")
+	emit_signal("inventory_update", inventory)
+
+func add_to_inventory(item):
+	for i in range(inventory.size()):
+		if inventory[i] != "empty":
+			continue
+			
+		# Found an empty slot, insert
+		inventory[i] = item
+		emit_signal("inventory_update", inventory)
+		return true
+	# No empty slots :(
+	return false
+
+func remove_from_inventory(idx):
+	if idx >= 0 && idx <= 9:
+		inventory[idx] = "empty"
+		emit_signal("inventory_update", inventory)
+		return true
+	return false
+
+func set_held_item(idx):
+	# Remove previosly held item
+	if held_item != null:
+		held_item.queue_free()
+	
+	# Switch to empty, return to flying state
+	if inventory[idx] == "empty":
+		held_item = null
+		held_item_idx = -1
+		state = FLYING
+		return
+	
+	# Fade sprite
+	var sprite : Sprite = Sprite.new()
+	sprite.texture = TurretTexture
+	sprite.modulate = Color(1.0, 1.0, 1.0, 0.5)
+	
+	# Set to cursor position
+	var node : Node2D = Node2D.new()
+	node.position = get_local_mouse_position()
+	
+	node.add_child(sprite)
+	add_child(node)
+	
+	# move to PLACING mode
+	held_item = node
+	held_item_idx = idx
+	state = PLACING
 
 func _process(delta):
 	if !input_enabled:
@@ -38,16 +95,12 @@ func _process(delta):
 		(held_item as Node2D).global_rotation = 0
 		
 	# Select inventory item
-	if Input.is_action_just_pressed("item_1"):
-		var sprite : Sprite = Sprite.new()
-		sprite.texture = TurretTexture
-		sprite.modulate = Color(1.0, 1.0, 1.0, 0.5)
-		var node : Node2D = Node2D.new()
-		node.position = mouse_pos
-		node.add_child(sprite)
-		add_child(node)
-		held_item = node
-		state = PLACING
+	for i in range(9):
+		if Input.is_action_just_pressed("item_" + str(i + 1)):
+			set_held_item(i)
+			# if two buttons where pressed at the same time, 
+			# we select the lowest
+			break
 		
 	# Shoot/place item
 	if Input.is_action_just_pressed("shoot"):
@@ -59,8 +112,11 @@ func _process(delta):
 					return
 				print("placing turret")
 				emit_signal("place_turret", get_global_mouse_position(), 0)
+				remove_from_inventory(held_item_idx)
 				held_item.queue_free()
 				held_item = null
+				held_item_idx = -1
+				
 				state = FLYING
 
 func _physics_process(delta):

@@ -5,6 +5,7 @@
 
 - Inventory system for buying turrets
 - Wall/sheild, while placing rotate towards player
+- Proper turret placement (no overlapping)
 - Flame thrower turret
 - Tripple shot upgrade
 - Piercing bullet upgrade
@@ -17,3 +18,6 @@
     - 30 seconds to prepare
     - round begins
     - next round, increase difficulty
+- Dialog boxes
+    - Tutorial
+    - "MITOCONDRIA ARE THE POWER HOUSE OF THE CELL"

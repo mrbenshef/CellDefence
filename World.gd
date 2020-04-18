@@ -42,8 +42,9 @@ func _on_Nucleaus_open_nucleaus_shop():
 
 func _on_HUD_nucleaus_store_heal():
 	if protein >= 40:
-		update_protein(protein - 40)
-		
+		if $Player.add_to_inventory("turret"):
+			update_protein(protein - 40)
+
 func _on_Player_place_turret(pos, rot):
 	var turret = TURRET.instance()
 	turret.position = pos

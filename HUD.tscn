@@ -14,6 +14,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="InventoryLabel" type="Label" parent="."]
+margin_top = 36.0
+margin_right = 106.0
+margin_bottom = 360.0
+text = "Inventory:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="NucleausHUD" parent="." instance=ExtResource( 2 )]
 [connection signal="pressed" from="NucleausHUD/HealButton" to="." method="_on_HealButton_pressed"]
 
