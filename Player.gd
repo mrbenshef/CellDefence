@@ -2,6 +2,12 @@ extends KinematicBody2D
 
 signal shoot_bullet
 signal protein_pickup
+signal place_turret
+
+enum {
+	FLYING
+	PLACING
+}
 
 const WALL_COLLISION_BIT = 2
 
@@ -11,18 +17,51 @@ export var FRICTION : int = 500
 export var BOUNCE : int = 300
 export var ROTATION_SMOOTHING : float = 0.1
 
+export (Texture) var TurretTexture : Texture
+
 onready var Gun : Position2D = $Gun
 
+var state = FLYING
 var velocity : Vector2 = Vector2.ZERO
 var input_enabled : bool = true
-
-func _ready():
-	pass
+var held_item = null
 
 func _process(delta):
-	if input_enabled && Input.is_action_just_pressed("shoot"):
-		print("shoot!")
-		emit_signal("shoot_bullet", Gun.global_position, rotation)
+	if !input_enabled:
+		return
+		
+	var mouse_pos = get_local_mouse_position()
+		
+	# Move held item to mouse position
+	if held_item != null:
+		held_item.position = mouse_pos
+		(held_item as Node2D).global_rotation = 0
+		
+	# Select inventory item
+	if Input.is_action_just_pressed("item_1"):
+		var sprite : Sprite = Sprite.new()
+		sprite.texture = TurretTexture
+		sprite.modulate = Color(1.0, 1.0, 1.0, 0.5)
+		var node : Node2D = Node2D.new()
+		node.position = mouse_pos
+		node.add_child(sprite)
+		add_child(node)
+		held_item = node
+		state = PLACING
+		
+	# Shoot/place item
+	if Input.is_action_just_pressed("shoot"):
+		match state:
+			FLYING:
+				emit_signal("shoot_bullet", Gun.global_position, rotation)
+			PLACING:
+				if held_item == null:
+					return
+				print("placing turret")
+				emit_signal("place_turret", get_global_mouse_position(), 0)
+				held_item.queue_free()
+				held_item = null
+				state = FLYING
 
 func _physics_process(delta):
 	var input_vector : Vector2 = Vector2.ZERO
