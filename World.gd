@@ -30,8 +30,8 @@ func _on_SpawnTimer_timeout():
 	print("Spawning DNA!")
 	var dna = DNA.instance()
 	dna.position = spawnPoint
-	dna.rotation = rand_range(0, 2 * PI)
-	dna.set_target($Nucleaus.position)
+	#dna.rotation = rand_range(0, 2 * PI)
+	dna.set_target($Nucleaus.global_position)
 	add_child(dna)
 
 func _on_Player_protein_pickup():
