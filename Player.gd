@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal shoot_bullet
+signal protein_pickup
 
 const WALL_COLLISION_BIT = 2
 
@@ -46,12 +47,15 @@ func _physics_process(delta):
 			var collision = get_slide_collision(i)
 			if collision == null:
 				continue
-			
+
 			# Check we are colliding with a wall
 			var collider : PhysicsBody2D = collision.collider
 			if !collider.get_collision_layer_bit(WALL_COLLISION_BIT):
 				continue
-			
+
 			# Bounce!
 			velocity = collision.normal * BOUNCE
-				
+
+func _on_Magnet_body_entered(body):
+	emit_signal("protein_pickup")
+	body.set_target(self)

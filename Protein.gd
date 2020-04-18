@@ -1,12 +1,9 @@
-extends Area2D
+extends KinematicBody2D
 
 export var SPEED : float = 0.8
 
 var target = null
 var time : float = 0
-
-func _ready():
-	monitoring = true
 
 func _process(delta):
 	if target != null:
@@ -21,7 +18,5 @@ func _physics_process(delta):
 		time += delta * SPEED
 		position = position.linear_interpolate(target.position, time)
 
-func _on_Protein_body_entered(body):
-	monitoring = false
-	target = body
-	
+func set_target(new_target):
+	target = new_target

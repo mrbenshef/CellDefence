@@ -6,45 +6,12 @@
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=4]
 [ext_resource path="res://DNA.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Nucleaus.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Protein.tscn" type="PackedScene" id=7]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=7]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
 BULLET = ExtResource( 3 )
 DNA = ExtResource( 5 )
-
-[node name="Protein" parent="." instance=ExtResource( 7 )]
-position = Vector2( 433.258, 194.587 )
-
-[node name="Protein2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 445.828, 186.207 )
-
-[node name="Protein3" parent="." instance=ExtResource( 7 )]
-position = Vector2( 434.655, 167.352 )
-
-[node name="Protein4" parent="." instance=ExtResource( 7 )]
-position = Vector2( 468.175, 160.368 )
-
-[node name="Protein5" parent="." instance=ExtResource( 7 )]
-position = Vector2( 477.253, 192.492 )
-
-[node name="Protein6" parent="." instance=ExtResource( 7 )]
-position = Vector2( 452.812, 209.252 )
-
-[node name="Protein7" parent="." instance=ExtResource( 7 )]
-position = Vector2( 462.588, 177.827 )
-
-[node name="Protein8" parent="." instance=ExtResource( 7 )]
-position = Vector2( 490.522, 175.033 )
-
-[node name="Protein9" parent="." instance=ExtResource( 7 )]
-position = Vector2( 446.527, 154.083 )
-
-[node name="Protein10" parent="." instance=ExtResource( 7 )]
-position = Vector2( 462.588, 140.815 )
-
-[node name="Protein11" parent="." instance=ExtResource( 7 )]
-position = Vector2( 480.047, 143.608 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 304, 196 )
@@ -78,5 +45,8 @@ autostart = true
 
 [node name="Nucleaus" parent="." instance=ExtResource( 6 )]
 position = Vector2( 437.078, 281.406 )
+
+[node name="HUD" parent="." instance=ExtResource( 7 )]
+[connection signal="protein_pickup" from="Player" to="." method="_on_Player_protein_pickup"]
 [connection signal="shoot_bullet" from="Player" to="." method="_on_Player_shoot_bullet"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
