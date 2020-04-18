@@ -42,7 +42,7 @@ position = Vector2( 380.001, 102.167 )
 position = Vector2( 102.005, 94.5391 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.5
 autostart = true
 
 [node name="Nucleaus" parent="." instance=ExtResource( 6 )]

@@ -44,6 +44,11 @@ func _physics_process(delta):
 		if collision.collider.is_in_group("dna"):
 			break
 		
+		if collision.collider.is_in_group("damageable"):
+			if $AttackCooldownTimer.is_stopped():
+				collision.collider.damage(1)
+				$AttackCooldownTimer.start() # stops attack until cooldown elapsed
+		
 		# Bounce off object
 		velocity = collision.normal * BOUNCE	
 		
