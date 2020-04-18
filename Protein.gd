@@ -9,8 +9,12 @@ func _ready():
 	monitoring = true
 
 func _process(delta):
-	if time >= 1.0:
-		queue_free()
+	if target != null:
+		if time >= 1.0 || distance_to_target() < 2 :
+			queue_free()
+
+func distance_to_target():
+	return (target.position - position).length()
 
 func _physics_process(delta):
 	if target != null:

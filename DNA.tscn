@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/dna.png" type="Texture" id=1]
 [ext_resource path="res://DNA.gd" type="Script" id=2]
+[ext_resource path="res://Protein.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.66732
@@ -11,6 +12,7 @@ height = 17.1266
 collision_layer = 8
 collision_mask = 0
 script = ExtResource( 2 )
+Protein = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
