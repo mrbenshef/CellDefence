@@ -2,9 +2,14 @@ extends KinematicBody2D
 
 signal shoot_bullet
 
+const WALL_COLLISION_BIT = 2
+
 export var SPEED : int = 80
 export var ACCELERATION : int = 500
 export var FRICTION : int = 500
+export var BOUNCE : int = 300
+
+# onready var Wall : Wall = preload("res://Wall.tscn")
 
 onready var Gun : Position2D = $Gun
 
@@ -34,3 +39,15 @@ func _physics_process(delta):
 		velocity = velocity.move_toward(input_vector * SPEED, ACCELERATION * delta)
 	
 	velocity = move_and_slide(velocity)
+	
+	var slide_count = get_slide_count()
+	if slide_count > 0:
+		for i in range(slide_count):
+			var collision = get_slide_collision(i)
+			if collision != null:
+				var collider : PhysicsBody2D = collision.collider
+				if collider.get_collision_layer_bit(WALL_COLLISION_BIT):
+					
+					print(velocity, velocity.bounce(collision.normal))
+					velocity = collision.normal * BOUNCE
+				
