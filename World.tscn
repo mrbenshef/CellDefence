@@ -51,3 +51,4 @@ position = Vector2( 437.078, 281.406 )
 [connection signal="shoot_bullet" from="Player" to="." method="_on_Player_shoot_bullet"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="open_nucleaus_shop" from="Nucleaus" to="." method="_on_Nucleaus_open_nucleaus_shop"]
+[connection signal="nucleaus_store_heal" from="HUD" to="." method="_on_HUD_nucleaus_store_heal"]

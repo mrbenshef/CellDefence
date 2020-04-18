@@ -13,3 +13,6 @@ func open_nucleaus_store():
 
 func in_menu():
 	return $NucleausHUD.visible
+
+func _on_HealButton_pressed():
+	emit_signal("nucleaus_store_heal")

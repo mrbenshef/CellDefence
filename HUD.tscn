@@ -15,3 +15,6 @@ __meta__ = {
 }
 
 [node name="NucleausHUD" parent="." instance=ExtResource( 2 )]
+[connection signal="pressed" from="NucleausHUD/HealButton" to="." method="_on_HealButton_pressed"]
+
+[editable path="NucleausHUD"]
