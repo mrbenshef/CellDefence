@@ -41,18 +41,19 @@ func _physics_process(delta):
 		if collision == null:
 			break
 			
+		if collision.collider.is_in_group("dna"):
+			break
+		
 		# Bounce off object
-		velocity = collision.normal * BOUNCE
+		velocity = collision.normal * BOUNCE	
 		
 		if target != collision.collider.position:
-			if collision.collider.is_in_group("dna"):
-				break
 			# We bumped into somthing, ATTACK!
 			print("DNA, new target")
 			var new_target = collision.collider.position
 			set_target(new_target)
-			
 			break
+			
 			
 func set_target(new_target):
 	target = new_target

@@ -6,6 +6,7 @@ func _ready():
 	pass
 
 func _on_Cooldown_timeout():
+	return
 	var targets = $RangeArea2D.get_overlapping_bodies()
 	if targets.empty():
 		return
