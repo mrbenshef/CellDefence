@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/turret.png" type="Texture" id=1]
 [ext_resource path="res://Turret.gd" type="Script" id=2]
+[ext_resource path="res://HealthBar.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10.012, 9.99744 )
@@ -26,6 +27,9 @@ autostart = true
 
 [node name="RangeArea2D" type="Area2D" parent="."]
 collision_mask = 8
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea2D"]
 position = Vector2( -0.122086, 0 )
@@ -33,4 +37,7 @@ shape = SubResource( 2 )
 
 [node name="GunPosition2D" type="Position2D" parent="."]
 position = Vector2( 0, -13.9179 )
+
+[node name="HealthBar" parent="." instance=ExtResource( 3 )]
+position = Vector2( -12.1422, 16 )
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]

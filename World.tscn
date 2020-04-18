@@ -49,9 +49,6 @@ autostart = true
 position = Vector2( 437.078, 281.406 )
 
 [node name="HUD" parent="." instance=ExtResource( 7 )]
-
-[node name="Turret" parent="." instance=ExtResource( 8 )]
-position = Vector2( 164.808, 176.679 )
 [connection signal="place_turret" from="Player" to="." method="_on_Player_place_turret"]
 [connection signal="protein_pickup" from="Player" to="." method="_on_Player_protein_pickup"]
 [connection signal="shoot_bullet" from="Player" to="." method="_on_Player_shoot_bullet"]
