@@ -21,3 +21,7 @@ shape = SubResource( 1 )
 
 [node name="Gun" type="Position2D" parent="."]
 position = Vector2( 0, -16 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
