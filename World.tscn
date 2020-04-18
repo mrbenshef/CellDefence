@@ -1,32 +1,44 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://DNA.tscn" type="PackedScene" id=5]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
 BULLET = ExtResource( 3 )
+DNA = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 304, 196 )
 
-[node name="Wall" parent="." instance=ExtResource( 4 )]
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Wall" parent="Walls" instance=ExtResource( 4 )]
 position = Vector2( 227.999, 102.167 )
 
-[node name="Wall2" parent="." instance=ExtResource( 4 )]
+[node name="Wall2" parent="Walls" instance=ExtResource( 4 )]
 position = Vector2( 260.061, 102.167 )
 
-[node name="Wall3" parent="." instance=ExtResource( 4 )]
+[node name="Wall3" parent="Walls" instance=ExtResource( 4 )]
 position = Vector2( 288, 102.167 )
 
-[node name="Wall6" parent="." instance=ExtResource( 4 )]
+[node name="Wall6" parent="Walls" instance=ExtResource( 4 )]
 position = Vector2( 320, 102.167 )
 
-[node name="Wall5" parent="." instance=ExtResource( 4 )]
+[node name="Wall5" parent="Walls" instance=ExtResource( 4 )]
 position = Vector2( 352.062, 102.167 )
 
-[node name="Wall4" parent="." instance=ExtResource( 4 )]
+[node name="Wall4" parent="Walls" instance=ExtResource( 4 )]
 position = Vector2( 380.001, 102.167 )
+
+[node name="SpawnPoint" type="Position2D" parent="."]
+position = Vector2( 102.005, 94.5391 )
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 [connection signal="shoot_bullet" from="Player" to="." method="_on_Player_shoot_bullet"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

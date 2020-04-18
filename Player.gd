@@ -44,10 +44,14 @@ func _physics_process(delta):
 	if slide_count > 0:
 		for i in range(slide_count):
 			var collision = get_slide_collision(i)
-			if collision != null:
-				var collider : PhysicsBody2D = collision.collider
-				if collider.get_collision_layer_bit(WALL_COLLISION_BIT):
-					
-					print(velocity, velocity.bounce(collision.normal))
-					velocity = collision.normal * BOUNCE
+			if collision == null:
+				continue
+			
+			# Check we are colliding with a wall
+			var collider : PhysicsBody2D = collision.collider
+			if !collider.get_collision_layer_bit(WALL_COLLISION_BIT):
+				continue
+			
+			# Bounce!
+			velocity = collision.normal * BOUNCE
 				
