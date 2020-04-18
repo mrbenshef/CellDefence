@@ -21,12 +21,11 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):
 		print("shoot!")
-		emit_signal("shoot_bullet", Gun.global_position, rotation - PI / 2)
+		emit_signal("shoot_bullet", Gun.global_position, rotation)
 
 func _physics_process(delta):
-	var mouse_pos = get_viewport().get_mouse_position()
-	var target_angle = position.angle_to_point(mouse_pos) - PI / 2
-	rotation = target_angle
+	var mouse_pos = get_local_mouse_position()
+	rotation += mouse_pos.angle()
 
 	var input_vector : Vector2 = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
