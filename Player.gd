@@ -8,6 +8,7 @@ export var SPEED : int = 80
 export var ACCELERATION : int = 500
 export var FRICTION : int = 500
 export var BOUNCE : int = 300
+export var ROTATION_SMOOTHING : float = 0.1
 
 # onready var Wall : Wall = preload("res://Wall.tscn")
 
@@ -25,7 +26,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	var mouse_pos = get_local_mouse_position()
-	rotation += mouse_pos.angle()
+	rotation += mouse_pos.angle() * ROTATION_SMOOTHING
 
 	var input_vector : Vector2 = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
