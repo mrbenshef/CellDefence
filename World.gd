@@ -8,6 +8,9 @@ var protein : int = 0
 
 func _ready():
 	pass
+	
+func _process(_delta):
+	$Player.input_enabled = !$HUD.in_menu()
 
 func _on_Player_shoot_bullet(pos, rot):
 	var bullet : RigidBody2D = BULLET.instance()
@@ -29,3 +32,7 @@ func _on_SpawnTimer_timeout():
 func _on_Player_protein_pickup():
 	protein += 1
 	$HUD.set_protein_score(protein)
+
+
+func _on_Nucleaus_open_nucleaus_shop():
+	$HUD.open_nucleaus_store()

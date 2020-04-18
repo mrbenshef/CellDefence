@@ -11,28 +11,30 @@ export var FRICTION : int = 500
 export var BOUNCE : int = 300
 export var ROTATION_SMOOTHING : float = 0.1
 
-# onready var Wall : Wall = preload("res://Wall.tscn")
-
 onready var Gun : Position2D = $Gun
 
 var velocity : Vector2 = Vector2.ZERO
+var input_enabled : bool = true
 
 func _ready():
 	pass
 
 func _process(delta):
-	if Input.is_action_just_pressed("shoot"):
+	if input_enabled && Input.is_action_just_pressed("shoot"):
 		print("shoot!")
 		emit_signal("shoot_bullet", Gun.global_position, rotation)
 
 func _physics_process(delta):
-	var mouse_pos = get_local_mouse_position()
-	rotation += mouse_pos.angle() * ROTATION_SMOOTHING
-
 	var input_vector : Vector2 = Vector2.ZERO
-	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	input_vector.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-	input_vector = input_vector.normalized()
+	
+	if input_enabled:
+		# Point to mouse
+		var mouse_pos = get_local_mouse_position()
+		rotation += mouse_pos.angle() * ROTATION_SMOOTHING
+		
+		input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+		input_vector.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+		input_vector = input_vector.normalized()
 	
 	if input_vector == Vector2.ZERO:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
