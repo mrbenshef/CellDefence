@@ -48,5 +48,6 @@ func _on_Player_place_turret(pos, rot):
 	var turret = TURRET.instance()
 	turret.position = pos
 	turret.rotation = rot
+	turret.connect("shoot_bullet", self, "_on_Player_shoot_bullet")
 	add_child(turret)
 	
