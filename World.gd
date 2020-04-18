@@ -22,4 +22,5 @@ func _on_SpawnTimer_timeout():
 	var dna = DNA.instance()
 	dna.position = spawnPoint
 	dna.rotation = rand_range(0, 2 * PI)
+	dna.set_target($Nucleaus.position)
 	add_child(dna)
