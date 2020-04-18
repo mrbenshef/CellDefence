@@ -1,7 +1,11 @@
 # TODO
 
-- Test with xbox controller
-- Remove cheats
+## Chores
+
+- [ ] Test with xbox controller
+- [ ] Remove cheats
+
+## Minimum Viable Product
 
 - [x] Inventory system for buying turrets
 - [ ] Wall/sheild, while placing rotate towards player
@@ -10,7 +14,7 @@
 - [ ] Tripple shot upgrade
 - [ ] Piercing bullet upgrade
 - [ ] Speed boost upgrade
-- [ ] Build arena
+- [x] Build arena
 - [ ] Add mitocondria shops
 - [ ] Add virus "ships"
 - [ ] Game loop
@@ -21,3 +25,7 @@
 - [ ] Dialog boxes
     - Tutorial
     - "MITOCONDRIA ARE THE POWER HOUSE OF THE CELL"
+
+## Bonus
+
+- [ ] Minimap
