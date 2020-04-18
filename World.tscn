@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -9,15 +9,17 @@
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Turret.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/checkered_background.png" type="Texture" id=9]
+[ext_resource path="res://Virus.tscn" type="PackedScene" id=10]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
 BULLET = ExtResource( 3 )
 DNA = ExtResource( 5 )
 TURRET = ExtResource( 8 )
+VIRUS = ExtResource( 10 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 300, 180 )
+position = Vector2( 306.267, -115.677 )
 
 [node name="Walls" type="Node2D" parent="."]
 
@@ -69,6 +71,24 @@ end_cap_mode = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2( 50, 50 )
 polygon = PoolVector2Array( -165.023, -173.607, 150.679, -283.977, 280.186, -492.491, 663.819, -388.234, 877.22, -90.9388, 1056.41, 209.615, 820.3, 808.123, 198.811, 783.574, -371.735, 1025.8, -720.61, 588.147, -817.009, -55.6214, -797.065, -46.7571, -698.45, 579.283, -366.033, 1002.18, 194.348, 765.159, 807.803, 789.011, 1036.05, 211.244, 863.373, -80.3503, 654.045, -371.13, 287.516, -469.685, 163.711, -270.131, -163.394, -151.615, -528.293, -257.501, -797.081, -48.1729, -817.443, -57.1325, -533.18, -280.308 )
+
+[node name="VirusLandingZones" type="Node" parent="."]
+
+[node name="1" type="Position2D" parent="VirusLandingZones"]
+position = Vector2( 52.6477, -183.338 )
+rotation = -0.338594
+scale = Vector2( 1, 1 )
+__meta__ = {
+"_gizmo_extents_": 78.0
+}
+
+[node name="2" type="Position2D" parent="VirusLandingZones"]
+position = Vector2( 545.769, -384.204 )
+rotation = 0.26529
+scale = Vector2( 1, 1 )
+__meta__ = {
+"_gizmo_extents_": 78.0
+}
 [connection signal="inventory_update" from="Player" to="HUD" method="_on_Player_inventory_update"]
 [connection signal="place_turret" from="Player" to="." method="_on_Player_place_turret"]
 [connection signal="protein_pickup" from="Player" to="." method="_on_Player_protein_pickup"]

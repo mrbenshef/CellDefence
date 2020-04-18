@@ -3,12 +3,18 @@ extends Node2D
 export (PackedScene) var BULLET
 export (PackedScene) var DNA
 export (PackedScene) var TURRET
+export (PackedScene) var VIRUS
+
 onready var spawnPoint : Vector2 = $SpawnPoint.position
 
 var protein : int = 0
 
 func _ready():
-	pass
+	for position in $VirusLandingZones.get_children():
+		var virus = VIRUS.instance()
+		virus.transform = position.transform
+		add_child(virus)
+		virus.launch()
 	
 func _process(_delta):
 	$Player.input_enabled = !$HUD.in_menu()

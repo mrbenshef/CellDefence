@@ -14,9 +14,10 @@
 - [ ] Tripple shot upgrade
 - [ ] Piercing bullet upgrade
 - [ ] Speed boost upgrade
+- [ ] Magnet upgrade
 - [x] Build arena
 - [ ] Add mitocondria shops
-- [ ] Add virus "ships"
+- [x] Add virus "ships"
 - [ ] Game loop
     - virus's land
     - 30 seconds to prepare
@@ -29,3 +30,4 @@
 ## Bonus
 
 - [ ] Minimap
+- [ ] Reasearch turrets and upgrades in nucleaes, buy/build elsewhere, research takes time
