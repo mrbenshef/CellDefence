@@ -43,6 +43,7 @@ var magnet_distance : int = 50
 var tooltip : String = ""
 var is_over_mitocondria : bool = false
 var is_over_mitocondria_magnet : bool = false
+var is_over_mitocondria_bullets : bool = false
 
 func _ready():
 	for _i in range(9):
@@ -111,6 +112,8 @@ func _process(delta):
 			emit_signal("open_shop", "mitocondria")
 		elif is_over_mitocondria_magnet:
 			emit_signal("open_shop", "mitocondria_magnet")
+		elif is_over_mitocondria_bullets:
+			emit_signal("open_shop", "mitocondria_bullets")
 		
 	var mouse_pos = get_local_mouse_position()
 	var is_valid_placement_position : bool = false
@@ -216,7 +219,7 @@ func _on_Nucleaus_mouse_exited():
 
 func _on_mitocondria_mouse_entered():
 	is_over_mitocondria = true
-	tooltip = "Mitocondria (press e)"
+	tooltip = "Mitocondria of Weaponry (press e)"
 
 
 func _on_mitocondria_mouse_exited():
@@ -231,4 +234,13 @@ func _on_mitocondria2_mouse_entered():
 
 func _on_mitocondria2_mouse_exited():
 	is_over_mitocondria_magnet = false
+	tooltip = ""
+
+
+func _on_mitocondria3_mouse_entered():
+	is_over_mitocondria_bullets = true
+	tooltip = "Mitocondria of Bullets (press e)"
+
+func _on_mitocondria3_mouse_exited():
+	is_over_mitocondria_bullets = false	
 	tooltip = ""

@@ -232,17 +232,16 @@ func add_shop_buttons():
 		"mitocondria":
 			$HUD.add_shop_button("Left Gun (40pp)", "left_gun", protein >= 40 && !$Player.guns_unlocked[0])
 			$HUD.add_shop_button("Right Gun (40pp)", "right_gun", protein >= 40 && !$Player.guns_unlocked[2])
-			$HUD.add_shop_button("Pierce (100pp)", "pierce", protein >= 100 && !$Player.pierce_unlocked)
-			$HUD.add_shop_button("Damage (200pp)", "damage", protein >= 200 && $Player.bullet_damage == 1)
-			$HUD.add_shop_button("Damage2 (400pp)", "damage2", protein >= 400 && $Player.bullet_damage == 2)
 		"mitocondria_magnet":
 			$HUD.add_shop_button("Magnet lvl 1 (100pp)", "magnet1", protein >= 100 && $Player.magnet_distance == 50)
 			$HUD.add_shop_button("Magnet lvl 2 (200pp)", "magnet2", protein >= 200 && $Player.magnet_distance == 100)
 			$HUD.add_shop_button("Magnet lvl 3 (400pp)", "magnet3", protein >= 400 && $Player.magnet_distance == 200)
+		"mitocondria_bullets":
+			$HUD.add_shop_button("Pierce (100pp)", "pierce", protein >= 100 && !$Player.pierce_unlocked)
+			$HUD.add_shop_button("Damage lvl 1 (200pp)", "damage", protein >= 200 && $Player.bullet_damage == 1)
+			$HUD.add_shop_button("Damage lvl 2 (400pp)", "damage2", protein >= 400 && $Player.bullet_damage == 2)
 		"nucleaus":
 			$HUD.add_shop_button("Turret (40pp)", "turret", protein >= 40)
-	
-
 
 func _on_mitocondria2_mouse_exited():
 	pass # Replace with function body.

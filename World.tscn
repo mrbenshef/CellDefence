@@ -216,7 +216,7 @@ volume_db = -20.0
 [connection signal="mouse_exited" from="mitocondria" to="Player" method="_on_mitocondria_mouse_exited"]
 [connection signal="mouse_entered" from="mitocondria2" to="Player" method="_on_mitocondria2_mouse_entered"]
 [connection signal="mouse_exited" from="mitocondria2" to="Player" method="_on_mitocondria2_mouse_exited"]
-[connection signal="mouse_entered" from="mitocondria3" to="Player" method="_on_mitocondria_mouse_entered"]
-[connection signal="mouse_exited" from="mitocondria3" to="Player" method="_on_mitocondria_mouse_exited"]
+[connection signal="mouse_entered" from="mitocondria3" to="Player" method="_on_mitocondria3_mouse_entered"]
+[connection signal="mouse_exited" from="mitocondria3" to="Player" method="_on_mitocondria3_mouse_exited"]
 
 [editable path="HUD"]
