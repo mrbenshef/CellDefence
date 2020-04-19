@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://Turret.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/blood3.png" type="Texture" id=9]
 [ext_resource path="res://Virus.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/mitocondria.png" type="Texture" id=11]
 [ext_resource path="res://Mitocondria.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/select.wav" type="AudioStream" id=13]
 
@@ -50,7 +49,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="Nucleaus" parent="." instance=ExtResource( 6 )]
-position = Vector2( 437.078, 281.406 )
+position = Vector2( 240.657, 84.985 )
 MAX_HEALTH = 100
 
 [node name="HUD" parent="." instance=ExtResource( 7 )]
@@ -63,7 +62,7 @@ collision_mask = 0
 
 [node name="Line2D" type="Line2D" parent="Wall"]
 position = Vector2( 50, 50 )
-points = PoolVector2Array( -164.736, -163.684, 156.089, -276.814, 282.374, -481.553, 657.949, -380.104, 868.179, -89.422, 1046.72, 209.776, 813.359, 798.314, 193.877, 774.571, -369.485, 1014.27, -712.682, 580.308, -807.655, -54.1746, -533.279, -269.041, -164.81, -163.604 )
+points = PoolVector2Array( -224.478, -368.663, -51.3715, -485.759, 282.374, -481.553, 657.949, -380.104, 868.179, -89.422, 940.969, 206.81, 645.28, 552.71, 106.904, 597.342, -352.72, 420.68, -551.228, 207.822, -532.095, -62.4354, -390.987, -256.16, -224.478, -368.663 )
 width = 20.0
 default_color = Color( 1, 1, 1, 1 )
 texture = ExtResource( 4 )
@@ -74,29 +73,29 @@ end_cap_mode = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall"]
 position = Vector2( 50, 50 )
-polygon = PoolVector2Array( -165.023, -173.607, 150.679, -283.977, 280.186, -492.491, 663.819, -388.234, 877.22, -90.9388, 1056.41, 209.615, 820.3, 808.123, 198.811, 783.574, -371.735, 1025.8, -720.61, 588.147, -817.009, -55.6214, -797.065, -46.7571, -698.45, 579.283, -366.033, 1002.18, 194.348, 765.159, 807.803, 789.011, 1036.05, 211.244, 863.373, -80.3503, 654.045, -371.13, 287.516, -469.685, 163.711, -270.131, -163.394, -151.615, -528.293, -257.501, -797.081, -48.1729, -817.443, -57.1325, -533.18, -280.308 )
+polygon = PoolVector2Array( -51.4864, -496.375, -396.273, -264.729, -541.124, -67.4627, -561.459, 209.871, -359.068, 428.672, 105.646, 607.518, 649.795, 562.331, 951.597, 209.157, 877.871, -94.0724, 664.302, -388.265, 284.967, -491.481, -51.558, -496.476, -48.2284, -475.785, 282.114, -471.742, 652.411, -371.379, 858.845, -84.7971, 929.955, 204.401, 640.519, 542.829, 108.5, 587.302, -346.463, 412.024, -540.768, 204.163, -521.86, -59.3766, -383.29, -248.936, -48.2552, -475.837 )
 
 [node name="VirusLandingZones" type="Node" parent="."]
 
 [node name="1" type="Position2D" parent="VirusLandingZones"]
-position = Vector2( 52.6477, -183.338 )
-rotation = -0.338594
+position = Vector2( -163.891, -337.922 )
+rotation = -0.593412
 __meta__ = {
 "_edit_group_": true,
 "_gizmo_extents_": 78.0
 }
 
 [node name="2" type="Position2D" parent="VirusLandingZones"]
-position = Vector2( 545.769, -384.204 )
-rotation = 0.26529
+position = Vector2( 179.966, -443.88 )
+rotation = 0.0174533
 __meta__ = {
 "_edit_group_": true,
 "_gizmo_extents_": 78.0
 }
 
 [node name="3" type="Position2D" parent="VirusLandingZones"]
-position = Vector2( 264.165, -340.089 )
-rotation = -1.01753
+position = Vector2( 530.923, -388.17 )
+rotation = 0.261799
 __meta__ = {
 "_edit_group_": true,
 "_gizmo_extents_": 78.0
@@ -111,72 +110,56 @@ __meta__ = {
 }
 
 [node name="5" type="Position2D" parent="VirusLandingZones"]
-position = Vector2( 1023.49, 117.518 )
-rotation = 1.03323
+position = Vector2( 964.873, 108.481 )
+rotation = 1.32645
 __meta__ = {
 "_edit_group_": true,
 "_gizmo_extents_": 78.0
 }
 
 [node name="6" type="Position2D" parent="VirusLandingZones"]
-position = Vector2( 984.789, 569.263 )
-rotation = 1.94779
+position = Vector2( 873.663, 409.471 )
+rotation = 2.27591
 __meta__ = {
 "_edit_group_": true,
 "_gizmo_extents_": 78.0
 }
 
 [node name="7" type="Position2D" parent="VirusLandingZones"]
-position = Vector2( 569.197, 847.051 )
-rotation = 3.18174
+position = Vector2( 427.784, 634.82 )
+rotation = 3.05956
 __meta__ = {
 "_edit_group_": true,
 "_gizmo_extents_": 78.0
 }
 
 [node name="8" type="Position2D" parent="VirusLandingZones"]
-position = Vector2( -6.46272, 941.972 )
-rotation = 2.74017
+position = Vector2( -67.4679, 571.845 )
+rotation = 3.50811
 __meta__ = {
 "_edit_group_": true,
 "_gizmo_extents_": 78.0
 }
 
 [node name="9" type="Position2D" parent="VirusLandingZones"]
-position = Vector2( -496.534, 856.519 )
-rotation = 4.04044
+position = Vector2( -407.193, 373.282 )
+rotation = 3.96364
 __meta__ = {
 "_edit_group_": true,
 "_gizmo_extents_": 78.0
 }
 
 [node name="10" type="Position2D" parent="VirusLandingZones"]
-position = Vector2( -694.794, 483.578 )
-rotation = 4.56404
+position = Vector2( -500.641, 106.913 )
+rotation = 4.78569
 __meta__ = {
 "_edit_group_": true,
 "_gizmo_extents_": 78.0
 }
 
 [node name="11" type="Position2D" parent="VirusLandingZones"]
-position = Vector2( -743.764, 156.45 )
-rotation = 4.56404
-__meta__ = {
-"_edit_group_": true,
-"_gizmo_extents_": 78.0
-}
-
-[node name="12" type="Position2D" parent="VirusLandingZones"]
-position = Vector2( -618.383, -125.969 )
-rotation = 5.61821
-__meta__ = {
-"_edit_group_": true,
-"_gizmo_extents_": 78.0
-}
-
-[node name="13" type="Position2D" parent="VirusLandingZones"]
-position = Vector2( -281.682, -171.905 )
-rotation = 0.282743
+position = Vector2( -415.826, -120.507 )
+rotation = 5.34594
 __meta__ = {
 "_edit_group_": true,
 "_gizmo_extents_": 78.0
@@ -200,15 +183,13 @@ process_material = SubResource( 3 )
 texture = ExtResource( 9 )
 
 [node name="mitocondria" parent="." instance=ExtResource( 12 )]
-position = Vector2( 134.163, -54.5555 )
+position = Vector2( 541.294, -67.9114 )
 
-[node name="mitocondria2" type="Sprite" parent="."]
-position = Vector2( -328.544, 391.173 )
-texture = ExtResource( 11 )
+[node name="mitocondria2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 215.293, 361.619 )
 
-[node name="mitocondria3" type="Sprite" parent="."]
-position = Vector2( -173.086, 312.248 )
-texture = ExtResource( 11 )
+[node name="mitocondria3" parent="." instance=ExtResource( 12 )]
+position = Vector2( -73.5322, -17.9384 )
 
 [node name="Protein" type="Node" parent="."]
 
@@ -231,5 +212,9 @@ volume_db = -20.0
 [connection signal="timeout" from="PreperationTimer" to="." method="_on_PreperationTimer_timeout"]
 [connection signal="mouse_entered" from="mitocondria" to="Player" method="_on_mitocondria_mouse_entered"]
 [connection signal="mouse_exited" from="mitocondria" to="Player" method="_on_mitocondria_mouse_exited"]
+[connection signal="mouse_entered" from="mitocondria2" to="Player" method="_on_mitocondria_mouse_entered"]
+[connection signal="mouse_exited" from="mitocondria2" to="Player" method="_on_mitocondria_mouse_exited"]
+[connection signal="mouse_entered" from="mitocondria3" to="Player" method="_on_mitocondria_mouse_entered"]
+[connection signal="mouse_exited" from="mitocondria3" to="Player" method="_on_mitocondria_mouse_exited"]
 
 [editable path="HUD"]
