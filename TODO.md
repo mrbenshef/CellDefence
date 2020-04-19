@@ -5,6 +5,7 @@
 - [ ] Test with xbox controller
 - [ ] Remove cheats
 - [ ] Add ship velocity to bullets
+- [ ] Hide cell wall connection at top, put another line2d ontop?
 
 ## Minimum Viable Product
 

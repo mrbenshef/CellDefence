@@ -143,5 +143,5 @@ item_9={
 
 [rendering]
 
-environment/default_clear_color=Color( 0.458824, 0.152941, 0.360784, 1 )
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"

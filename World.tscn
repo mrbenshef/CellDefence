@@ -1,14 +1,33 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/cell_wall.png" type="Texture" id=4]
 [ext_resource path="res://DNA.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Nucleaus.tscn" type="PackedScene" id=6]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Turret.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/checkered_background.png" type="Texture" id=9]
+[ext_resource path="res://assets/particle.png" type="Texture" id=9]
 [ext_resource path="res://Virus.tscn" type="PackedScene" id=10]
+
+[sub_resource type="Gradient" id=2]
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_disable_z = true
+direction = Vector3( 1, 1, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 32.03
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.1
+scale_random = 0.55
+color_ramp = SubResource( 3 )
+hue_variation_random = 1.0
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -29,26 +48,26 @@ autostart = true
 
 [node name="Nucleaus" parent="." instance=ExtResource( 6 )]
 position = Vector2( 437.078, 281.406 )
-MAX_HEALTH = 1
+MAX_HEALTH = 100
 
 [node name="HUD" parent="." instance=ExtResource( 7 )]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Wall" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 0
 
-[node name="Line2D" type="Line2D" parent="StaticBody2D"]
+[node name="Line2D" type="Line2D" parent="Wall"]
 position = Vector2( 50, 50 )
 points = PoolVector2Array( -164.736, -163.684, 156.089, -276.814, 282.374, -481.553, 657.949, -380.104, 868.179, -89.422, 1046.72, 209.776, 813.359, 798.314, 193.877, 774.571, -369.485, 1014.27, -712.682, 580.308, -807.655, -54.1746, -533.279, -269.041, -164.81, -163.604 )
 width = 20.0
-default_color = Color( 0.752941, 0.376471, 0.596078, 1 )
-texture = ExtResource( 9 )
+default_color = Color( 1, 1, 1, 1 )
+texture = ExtResource( 4 )
 texture_mode = 1
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall"]
 position = Vector2( 50, 50 )
 polygon = PoolVector2Array( -165.023, -173.607, 150.679, -283.977, 280.186, -492.491, 663.819, -388.234, 877.22, -90.9388, 1056.41, 209.615, 820.3, 808.123, 198.811, 783.574, -371.735, 1025.8, -720.61, 588.147, -817.009, -55.6214, -797.065, -46.7571, -698.45, 579.283, -366.033, 1002.18, 194.348, 765.159, 807.803, 789.011, 1036.05, 211.244, 863.373, -80.3503, 654.045, -371.13, 287.516, -469.685, 163.711, -270.131, -163.394, -151.615, -528.293, -257.501, -797.081, -48.1729, -817.443, -57.1325, -533.18, -280.308 )
 
@@ -176,6 +195,16 @@ wait_time = 5.0
 one_shot = true
 
 [node name="DNAs" type="Node2D" parent="."]
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( -1079.1, -652.584 )
+z_index = -1
+amount = 5000
+lifetime = 200.0
+preprocess = 600.0
+visibility_rect = Rect2( 0, 0, 2500, 2000 )
+process_material = SubResource( 1 )
+texture = ExtResource( 9 )
 [connection signal="inventory_update" from="Player" to="HUD" method="_on_Player_inventory_update"]
 [connection signal="place_turret" from="Player" to="." method="_on_Player_place_turret"]
 [connection signal="protein_pickup" from="Player" to="." method="_on_Player_protein_pickup"]
