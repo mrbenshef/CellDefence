@@ -5,7 +5,7 @@ signal protein_pickup
 signal place_turret
 signal inventory_update
 signal select_update
-signal open_mitocondria_shop
+signal open_shop
 
 enum {
 	FLYING
@@ -38,14 +38,21 @@ onready var guns: Array = [$Gun1, $Gun2, $Gun3]
 var guns_unlocked: Array = [false, true, false]
 var pierce_unlocked : bool = false
 var bullet_damage : int = 1
+var magnet_distance : int = 50
 
 var tooltip : String = ""
 var is_over_mitocondria : bool = false
+var is_over_mitocondria_magnet : bool = false
 
 func _ready():
 	for _i in range(9):
 		inventory.append("empty")
 	emit_signal("inventory_update", inventory)
+
+func set_magnet_distance(distance):
+	magnet_distance = distance
+	var shape : CircleShape2D = $Magnet/CollisionShape2D.shape
+	shape.radius = distance
 
 func add_to_inventory(item):
 	for i in range(inventory.size()):
@@ -99,8 +106,11 @@ func _process(delta):
 	else:
 		HUD.set_tooltip(tooltip, true)
 		
-	if Input.is_action_just_pressed("interact") && is_over_mitocondria:
-		emit_signal("open_mitocondria_shop")
+	if Input.is_action_just_pressed("interact"): 
+		if is_over_mitocondria:
+			emit_signal("open_shop", "mitocondria")
+		elif is_over_mitocondria_magnet:
+			emit_signal("open_shop", "mitocondria_magnet")
 		
 	var mouse_pos = get_local_mouse_position()
 	var is_valid_placement_position : bool = false
@@ -211,4 +221,14 @@ func _on_mitocondria_mouse_entered():
 
 func _on_mitocondria_mouse_exited():
 	is_over_mitocondria = false
+	tooltip = ""
+
+
+func _on_mitocondria2_mouse_entered():
+	is_over_mitocondria_magnet = true
+	tooltip = "Mitocondria of Magnetism (press e)"
+
+
+func _on_mitocondria2_mouse_exited():
+	is_over_mitocondria_magnet = false
 	tooltip = ""

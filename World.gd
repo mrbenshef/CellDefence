@@ -189,6 +189,18 @@ func _on_HUD_store_purchase(key):
 			if protein >= 400 && $Player.bullet_damage == 2:
 				update_protein(protein - 400)
 				$Player.bullet_damage = 3
+		"magnet1":
+			if protein >= 100 && $Player.magnet_distance == 50:
+				update_protein(protein - 100)
+				$Player.set_magnet_distance(100)
+		"magnet2":	
+			if protein >= 200 && $Player.magnet_distance == 100:
+				update_protein(protein - 200)
+				$Player.set_magnet_distance(200)
+		"magnet3":	
+			if protein >= 400 && $Player.magnet_distance == 200:
+				update_protein(protein - 400)
+				$Player.set_magnet_distance(300)
 	$HUD.clear_shop_buttons()
 	add_shop_buttons()
 
@@ -215,12 +227,6 @@ func _on_Nucleaus_nucleaus_dead():
 	$Player.input_enabled = false
 	$HUD/GameOverBox.visible = true
 
-func _on_Player_open_mitocondria_shop():
-	$HUD.open_store()
-	$HUD.set_shop_label("Mitocondria")
-	current_shop = "mitocondria"
-	add_shop_buttons()
-
 func add_shop_buttons():
 	match current_shop:
 		"mitocondria":
@@ -229,6 +235,21 @@ func add_shop_buttons():
 			$HUD.add_shop_button("Pierce (100pp)", "pierce", protein >= 100 && !$Player.pierce_unlocked)
 			$HUD.add_shop_button("Damage (200pp)", "damage", protein >= 200 && $Player.bullet_damage == 1)
 			$HUD.add_shop_button("Damage2 (400pp)", "damage2", protein >= 400 && $Player.bullet_damage == 2)
+		"mitocondria_magnet":
+			$HUD.add_shop_button("Magnet lvl 1 (100pp)", "magnet1", protein >= 100 && $Player.magnet_distance == 50)
+			$HUD.add_shop_button("Magnet lvl 2 (200pp)", "magnet2", protein >= 200 && $Player.magnet_distance == 100)
+			$HUD.add_shop_button("Magnet lvl 3 (400pp)", "magnet3", protein >= 400 && $Player.magnet_distance == 200)
 		"nucleaus":
 			$HUD.add_shop_button("Turret (40pp)", "turret", protein >= 40)
 	
+
+
+func _on_mitocondria2_mouse_exited():
+	pass # Replace with function body.
+
+
+func _on_Player_open_shop(shop):
+	$HUD.open_store()
+	$HUD.set_shop_label("Mitocondria")
+	current_shop = shop
+	add_shop_buttons()

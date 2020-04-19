@@ -11,7 +11,7 @@
 radius = 12.2484
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 53.0611
+radius = 50.0
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 316.321, 178.726 )

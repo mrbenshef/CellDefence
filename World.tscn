@@ -184,9 +184,11 @@ texture = ExtResource( 9 )
 
 [node name="mitocondria" parent="." instance=ExtResource( 12 )]
 position = Vector2( 541.294, -67.9114 )
+rotation = -1.02102
 
 [node name="mitocondria2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 215.293, 361.619 )
+rotation = 3.78038
 
 [node name="mitocondria3" parent="." instance=ExtResource( 12 )]
 position = Vector2( -73.5322, -17.9384 )
@@ -197,7 +199,7 @@ position = Vector2( -73.5322, -17.9384 )
 stream = ExtResource( 13 )
 volume_db = -20.0
 [connection signal="inventory_update" from="Player" to="HUD" method="_on_Player_inventory_update"]
-[connection signal="open_mitocondria_shop" from="Player" to="." method="_on_Player_open_mitocondria_shop"]
+[connection signal="open_shop" from="Player" to="." method="_on_Player_open_shop"]
 [connection signal="place_turret" from="Player" to="." method="_on_Player_place_turret"]
 [connection signal="protein_pickup" from="Player" to="." method="_on_Player_protein_pickup"]
 [connection signal="select_update" from="Player" to="HUD" method="_on_Player_select_update"]
@@ -212,8 +214,8 @@ volume_db = -20.0
 [connection signal="timeout" from="PreperationTimer" to="." method="_on_PreperationTimer_timeout"]
 [connection signal="mouse_entered" from="mitocondria" to="Player" method="_on_mitocondria_mouse_entered"]
 [connection signal="mouse_exited" from="mitocondria" to="Player" method="_on_mitocondria_mouse_exited"]
-[connection signal="mouse_entered" from="mitocondria2" to="Player" method="_on_mitocondria_mouse_entered"]
-[connection signal="mouse_exited" from="mitocondria2" to="Player" method="_on_mitocondria_mouse_exited"]
+[connection signal="mouse_entered" from="mitocondria2" to="Player" method="_on_mitocondria2_mouse_entered"]
+[connection signal="mouse_exited" from="mitocondria2" to="Player" method="_on_mitocondria2_mouse_exited"]
 [connection signal="mouse_entered" from="mitocondria3" to="Player" method="_on_mitocondria_mouse_entered"]
 [connection signal="mouse_exited" from="mitocondria3" to="Player" method="_on_mitocondria_mouse_exited"]
 

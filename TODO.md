@@ -14,7 +14,7 @@
 - [ ] Multiple tiered turrets
 - [x] Tripple shot upgrade
 - [x] Piercing bullet upgrade
-- [ ] Magnet upgrade
+- [x] Magnet upgrade
 - [x] Build arena
 - [x] Add mitocondria shops
 - [x] Add virus "ships"
