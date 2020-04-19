@@ -8,7 +8,7 @@ export (PackedScene) var VIRUS
 onready var spawnPoint : Vector2 = $SpawnPoint.position
 var viruses : Array = []
 var spawn_count : int = 1
-var round_number : int = 1
+var round_number : int = 0
 
 var protein : int = 0
 
@@ -16,6 +16,9 @@ func _ready():
 	start_round()
 	
 func start_round():
+	round_number += 1
+	$HUD/RoundLabel.text = "Round: " + str(round_number)
+	
 	# Set preperation phase
 	$PreperationTimer.start()
 	$SpawnTimer.stop()

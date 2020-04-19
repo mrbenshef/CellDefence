@@ -41,6 +41,16 @@ text = "Tooltip"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="RoundLabel" type="Label" parent="."]
+margin_left = 519.548
+margin_right = 599.548
+margin_bottom = 14.0
+text = "Round: 0000"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="NucleausHUD/HealButton" to="." method="_on_HealButton_pressed"]
 
 [editable path="NucleausHUD"]

@@ -11,7 +11,6 @@ enum {
 
 var state = START
 
-
 func land():
 	state = LANDING
 	var start_position = position
@@ -27,7 +26,6 @@ func launch():
 	end_position.x += LANDING_HEIGHT * sin(rotation)
 	$Tween.interpolate_property(self, "position", position, end_position, LANDING_TIME, Tween.TRANS_QUART, Tween.EASE_IN)
 	$Tween.start()
-
 
 func _on_Tween_tween_completed(object, key):
 	if state == LAUNCHING:
