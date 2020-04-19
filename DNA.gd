@@ -12,6 +12,7 @@ var target = null
 var velocity : Vector2 = Vector2.ZERO
 
 func _ready():
+	$Sprite.modulate = Color(0.6, 0.2, 0.2, 1.0)
 	add_to_group("dna")
 	pass
 
