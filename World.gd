@@ -160,6 +160,7 @@ func add_nucleaus_shop_buttons():
 	$HUD.add_shop_button("Right Gun (40pp)", "right_gun", !$Player.guns_unlocked[2])
 	$HUD.add_shop_button("Pierce (100pp)", "pierce", !$Player.pierce_unlocked)
 	$HUD.add_shop_button("Damage (200pp)", "damage", $Player.bullet_damage == 1)
+	$HUD.add_shop_button("Damage2 (400pp)", "damage2", $Player.bullet_damage == 2)
 	
 func _on_Nucleaus_open_nucleaus_shop():
 	$HUD.open_store()
@@ -188,6 +189,10 @@ func _on_HUD_store_purchase(key):
 			if protein >= 200 && $Player.bullet_damage == 1:
 				update_protein(protein - 200)
 				$Player.bullet_damage = 2
+		"damage2":
+			if protein >= 400 && $Player.bullet_damage == 2:
+				update_protein(protein - 400)
+				$Player.bullet_damage = 3
 	$HUD.clear_shop_buttons()
 	add_nucleaus_shop_buttons()
 

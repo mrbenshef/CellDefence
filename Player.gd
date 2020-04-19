@@ -4,6 +4,7 @@ signal shoot_bullet
 signal protein_pickup
 signal place_turret
 signal inventory_update
+signal select_update
 
 enum {
 	FLYING
@@ -70,10 +71,12 @@ func set_held_item(idx):
 	if inventory[idx] == "empty":
 		held_item = null
 		held_item_idx = -1
+		emit_signal("select_update", -1)
 		state = FLYING
 		return
 	
 	held_item_idx = idx
+	emit_signal("select_update", idx)
 	
 	# instance HeldItem
 	held_item = HeldItem.instance()
@@ -142,7 +145,7 @@ func _process(delta):
 				held_item.queue_free()
 				held_item = null
 				held_item_idx = -1
-				
+				emit_signal("select_update", -1)
 				state = FLYING
 
 func _physics_process(delta):

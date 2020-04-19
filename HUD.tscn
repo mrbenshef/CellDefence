@@ -1,25 +1,25 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://HUD.gd" type="Script" id=1]
 [ext_resource path="res://ItemButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/Retro Gaming.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/turret.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 11
+font_data = ExtResource( 4 )
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
 ITEM_BUTTON = ExtResource( 2 )
+TurretTexture = ExtResource( 5 )
 
 [node name="ProteinScore" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 14.0
+theme = ExtResource( 3 )
 text = "Protein Points: 0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="InventoryLabel" type="Label" parent="."]
-margin_top = 36.0
-margin_right = 106.0
-margin_bottom = 360.0
-text = "Inventory:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -29,6 +29,7 @@ margin_left = 440.0
 margin_top = 106.699
 margin_right = 582.0
 margin_bottom = 254.699
+theme = ExtResource( 3 )
 color = Color( 0.14902, 0.172549, 0.231373, 1 )
 __meta__ = {
 "_edit_group_": true,
@@ -38,6 +39,7 @@ __meta__ = {
 [node name="ShopLabel" type="Label" parent="Shop"]
 margin_right = 142.0
 margin_bottom = 28.0
+theme = ExtResource( 3 )
 text = "Shop"
 align = 1
 valign = 1
@@ -50,6 +52,7 @@ margin_left = 130.552
 margin_top = -8.56935
 margin_right = 150.552
 margin_bottom = 11.4307
+theme = ExtResource( 3 )
 text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -60,6 +63,7 @@ margin_left = 12.0
 margin_top = 28.0
 margin_right = 132.0
 margin_bottom = 138.0
+theme = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -67,6 +71,7 @@ __meta__ = {
 [node name="GridContainer" type="GridContainer" parent="Shop/ScrollContainer"]
 margin_right = 120.0
 size_flags_horizontal = 3
+theme = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -75,14 +80,17 @@ __meta__ = {
 margin_top = 16.7739
 margin_right = 106.0
 margin_bottom = 30.7739
+theme = ExtResource( 3 )
 text = "Status"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TooltipLabel" type="Label" parent="."]
+visible = false
 margin_right = 44.0
 margin_bottom = 14.0
+theme = ExtResource( 3 )
 text = "Tooltip"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -92,6 +100,7 @@ __meta__ = {
 margin_left = 519.548
 margin_right = 599.548
 margin_bottom = 14.0
+theme = ExtResource( 3 )
 text = "Round: 0000"
 align = 2
 __meta__ = {
@@ -103,25 +112,259 @@ margin_left = 248.12
 margin_top = 134.699
 margin_right = 368.12
 margin_bottom = 214.699
+theme = ExtResource( 3 )
 color = Color( 0.14902, 0.172549, 0.231373, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GameOverLabel" type="Label" parent="GameOverBox"]
-margin_left = 21.8929
-margin_top = 17.6938
-margin_right = 95.8929
-margin_bottom = 31.6938
+margin_left = 22.0
+margin_top = 18.0
+margin_right = 101.0
+margin_bottom = 32.0
+theme = ExtResource( 3 )
 text = "Game over!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="Button" parent="GameOverBox"]
-margin_left = 31.8442
-margin_top = 45.7761
-margin_right = 88.8442
-margin_bottom = 65.7761
+margin_left = 22.0
+margin_top = 44.8958
+margin_right = 92.0
+margin_bottom = 64.8958
+theme = ExtResource( 3 )
 text = "Restart"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 110.0
+margin_top = -46.0
+margin_right = -106.0
+margin_bottom = -6.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="ColorRect" parent="HBoxContainer"]
+margin_right = 39.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+color = Color( 0.12549, 0.141176, 0.192157, 1 )
+
+[node name="InventorySprite1" type="Sprite" parent="HBoxContainer/PanelContainer"]
+position = Vector2( 20, 21 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer"]
+margin_top = -3.99164
+margin_right = 26.0
+margin_bottom = 18.0084
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer2" type="ColorRect" parent="HBoxContainer"]
+margin_left = 43.0
+margin_right = 82.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+color = Color( 0.12549, 0.141176, 0.192157, 1 )
+
+[node name="InventorySprite2" type="Sprite" parent="HBoxContainer/PanelContainer2"]
+position = Vector2( 20, 21 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2"]
+margin_top = -3.99164
+margin_right = 26.0
+margin_bottom = 18.0084
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer3" type="ColorRect" parent="HBoxContainer"]
+margin_left = 86.0
+margin_right = 125.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+color = Color( 0.12549, 0.141176, 0.192157, 1 )
+
+[node name="InventorySprite3" type="Sprite" parent="HBoxContainer/PanelContainer3"]
+position = Vector2( 20, 21 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer3"]
+margin_top = -3.99164
+margin_right = 26.0
+margin_bottom = 18.0084
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer4" type="ColorRect" parent="HBoxContainer"]
+margin_left = 129.0
+margin_right = 168.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+color = Color( 0.12549, 0.141176, 0.192157, 1 )
+
+[node name="InventorySprite4" type="Sprite" parent="HBoxContainer/PanelContainer4"]
+position = Vector2( 20, 21 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer4"]
+margin_top = -3.99164
+margin_right = 26.0
+margin_bottom = 18.0084
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer5" type="ColorRect" parent="HBoxContainer"]
+margin_left = 172.0
+margin_right = 211.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+color = Color( 0.12549, 0.141176, 0.192157, 1 )
+
+[node name="InventorySprite5" type="Sprite" parent="HBoxContainer/PanelContainer5"]
+position = Vector2( 20, 21 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer5"]
+margin_top = -3.99164
+margin_right = 26.0
+margin_bottom = 18.0084
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer6" type="ColorRect" parent="HBoxContainer"]
+margin_left = 215.0
+margin_right = 254.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+color = Color( 0.12549, 0.141176, 0.192157, 1 )
+
+[node name="InventorySprite6" type="Sprite" parent="HBoxContainer/PanelContainer6"]
+position = Vector2( 20, 21 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer6"]
+margin_top = -3.99164
+margin_right = 26.0
+margin_bottom = 18.0084
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "6"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer7" type="ColorRect" parent="HBoxContainer"]
+margin_left = 258.0
+margin_right = 297.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+color = Color( 0.12549, 0.141176, 0.192157, 1 )
+
+[node name="InventorySprite7" type="Sprite" parent="HBoxContainer/PanelContainer7"]
+position = Vector2( 20, 21 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer7"]
+margin_top = -3.99164
+margin_right = 26.0
+margin_bottom = 18.0084
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "7"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer8" type="ColorRect" parent="HBoxContainer"]
+margin_left = 301.0
+margin_right = 340.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+color = Color( 0.12549, 0.141176, 0.192157, 1 )
+
+[node name="InventorySprite8" type="Sprite" parent="HBoxContainer/PanelContainer8"]
+position = Vector2( 20, 21 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer8"]
+margin_top = -3.99164
+margin_right = 26.0
+margin_bottom = 18.0084
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "8"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer9" type="ColorRect" parent="HBoxContainer"]
+margin_left = 344.0
+margin_right = 384.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+color = Color( 0.12549, 0.141176, 0.192157, 1 )
+
+[node name="InventorySprite9" type="Sprite" parent="HBoxContainer/PanelContainer9"]
+position = Vector2( 20, 21 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer9"]
+margin_top = -3.99164
+margin_right = 26.0
+margin_bottom = 18.0084
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "9"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Shop/CloseButton" to="." method="_on_CloseButton_pressed"]

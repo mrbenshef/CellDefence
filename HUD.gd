@@ -1,6 +1,12 @@
 extends CanvasLayer
 
 export (PackedScene) var ITEM_BUTTON
+export (Texture) var TurretTexture
+
+onready var BlankTexture : Texture = Texture.new()
+
+export (Color) var DefaultColor
+export (Color) var SelectedColor
 
 signal store_purchase
 
@@ -20,11 +26,25 @@ func set_tooltip(text, visible):
 	$TooltipLabel.visible = visible
 
 func _on_Player_inventory_update(inventory):
-	var inventory_string : String = "Inventory:"
 	for i in range(inventory.size()):
-		inventory_string += "\n" + inventory[i]
-	$InventoryLabel.text = inventory_string
-
+		var sprite : Sprite = find_node("InventorySprite" + str(i + 1))
+		if sprite == null:
+			continue
+		match inventory[i]:
+			"turret":
+				sprite.texture = TurretTexture
+			_:
+				sprite.texture = BlankTexture
+	
+func _on_Player_select_update(idx):
+	print("player select: ", idx)
+	for i in range(9):
+		var rect : ColorRect = find_node("InventorySprite" + str(i + 1)).get_parent()
+		if i == idx:
+			rect.color = SelectedColor
+		else:
+			rect.color = DefaultColor
+	
 func open_store():
 	$Shop.visible = true
 
@@ -55,3 +75,5 @@ func _on_item_button_pressed(key):
 
 func _on_CloseButton_pressed():
 	close_store()
+
+
