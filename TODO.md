@@ -12,7 +12,7 @@
 - [x] Inventory system for buying turrets
 - [ ] Wall/sheild, while placing rotate towards player
 - [x] Proper turret placement (no overlapping)
-- [ ] Flame throer turret
+- [ ] Flame thrower turret
 - [x] Tripple shot upgrade
 - [ ] Piercing bullet upgrade
 - [ ] Speed boost upgrade

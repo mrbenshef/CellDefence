@@ -95,7 +95,8 @@ func start_round():
 	var spawn_points : Array = []
 	spawn_point_idxs.shuffle()
 	for i in range(round_virus_count(round_number)):
-		spawn_points.append(spawn_point_idxs[i])
+		#spawn_points.append(spawn_point_idxs[i])
+		spawn_points.append(i)
 	
 	# Spawn new viruses
 	for i in spawn_points:

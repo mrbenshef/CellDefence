@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Turret.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/particle.png" type="Texture" id=9]
 [ext_resource path="res://Virus.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/mitocondria.png" type="Texture" id=11]
 
 [sub_resource type="Gradient" id=2]
 
@@ -195,6 +196,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="DNAs" type="Node2D" parent="."]
+position = Vector2( 16.7417, 11.9583 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 position = Vector2( -1079.1, -652.584 )
@@ -205,6 +207,18 @@ preprocess = 600.0
 visibility_rect = Rect2( 0, 0, 2500, 2000 )
 process_material = SubResource( 1 )
 texture = ExtResource( 9 )
+
+[node name="mitocondria" type="Sprite" parent="."]
+position = Vector2( -216.135, 491.623 )
+texture = ExtResource( 11 )
+
+[node name="mitocondria2" type="Sprite" parent="."]
+position = Vector2( -328.544, 391.173 )
+texture = ExtResource( 11 )
+
+[node name="mitocondria3" type="Sprite" parent="."]
+position = Vector2( -173.086, 312.248 )
+texture = ExtResource( 11 )
 [connection signal="inventory_update" from="Player" to="HUD" method="_on_Player_inventory_update"]
 [connection signal="place_turret" from="Player" to="." method="_on_Player_place_turret"]
 [connection signal="protein_pickup" from="Player" to="." method="_on_Player_protein_pickup"]

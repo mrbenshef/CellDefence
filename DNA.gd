@@ -19,6 +19,7 @@ func set_max_health(h):
 
 var target = null
 var velocity : Vector2 = Vector2.ZERO
+var target_offset : Vector2 = Vector2.ZERO
 
 func _ready():
 	$Sprite.modulate = target_color(0)
@@ -30,21 +31,24 @@ func target_color(h):
 func _process(delta):
 	$Sprite.modulate = lerp($Sprite.modulate, target_color(health), delta * 20)
 	
-	if (target - position).length() < 10.0:
+	var distance_to_target = (target - position).length()
+	if distance_to_target < 10.0:
 		queue_free()
+	elif distance_to_target < 100.0:
+		target_offset = Vector2.ZERO
 
 func _physics_process(delta):	
 	if target == null:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	else:
-		var direction = (target - position).normalized()
+		var direction = ((target + target_offset) - position).normalized()
 		velocity = velocity.move_toward(direction * SPEED, ACCELERATION * delta)
 		
 	velocity = move_and_slide(velocity)
 	
 	# Point towards direction of travel / target
 	if target != null:
-		rotation = lerp(rotation, target.angle_to_point(position), delta * ROTATION_SPEED)
+		rotation = lerp(rotation, (target + target_offset).angle_to_point(position), delta * ROTATION_SPEED)
 	else:
 		rotation = lerp(rotation, velocity.angle(), delta * ROTATION_SPEED)
 		
@@ -76,6 +80,7 @@ func _physics_process(delta):
 			
 func set_target(new_target):
 	target = new_target
+	target_offset = Vector2(rand_range(-300, 300), rand_range(-300, 300))
 
 func _on_Area2D_body_entered(body):	
 	health -= 1
@@ -93,3 +98,7 @@ func _on_Area2D_body_entered(body):
 		get_tree().current_scene.add_child(protein)
 	
 	queue_free()
+
+
+func _on_SenseTimer_timeout():
+	target_offset *= 0.5

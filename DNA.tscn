@@ -44,4 +44,9 @@ one_shot = true
 [node name="Tween" type="Tween" parent="."]
 repeat = true
 playback/repeat = true
+
+[node name="SenseTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="SenseTimer" to="." method="_on_SenseTimer_timeout"]
