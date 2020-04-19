@@ -137,14 +137,25 @@ margin_bottom = 64.8958
 theme = ExtResource( 3 )
 text = "Restart"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 96.2039
+margin_top = 306.711
+margin_right = 506.204
+margin_bottom = 354.711
+color = Color( 0.476807, 0.501291, 0.5625, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 110.0
-margin_top = -46.0
-margin_right = -106.0
-margin_bottom = -6.0
+margin_left = 4.0
+margin_top = -44.4377
+margin_right = -4.0
+margin_bottom = -4.43768
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
@@ -153,19 +164,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer" type="ColorRect" parent="HBoxContainer"]
-margin_right = 39.0
+[node name="PanelContainer" type="ColorRect" parent="ColorRect/HBoxContainer"]
+margin_right = 41.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
 color = Color( 0.12549, 0.141176, 0.192157, 1 )
 
-[node name="InventorySprite1" type="Sprite" parent="HBoxContainer/PanelContainer"]
+[node name="InventorySprite1" type="Sprite" parent="ColorRect/HBoxContainer/PanelContainer"]
 position = Vector2( 20, 21 )
 texture = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer"]
+[node name="Label" type="Label" parent="ColorRect/HBoxContainer/PanelContainer"]
 margin_top = -3.99164
 margin_right = 26.0
 margin_bottom = 18.0084
@@ -176,20 +187,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer2" type="ColorRect" parent="HBoxContainer"]
-margin_left = 43.0
-margin_right = 82.0
+[node name="PanelContainer2" type="ColorRect" parent="ColorRect/HBoxContainer"]
+margin_left = 45.0
+margin_right = 86.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
 color = Color( 0.12549, 0.141176, 0.192157, 1 )
 
-[node name="InventorySprite2" type="Sprite" parent="HBoxContainer/PanelContainer2"]
+[node name="InventorySprite2" type="Sprite" parent="ColorRect/HBoxContainer/PanelContainer2"]
 position = Vector2( 20, 21 )
 texture = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2"]
+[node name="Label" type="Label" parent="ColorRect/HBoxContainer/PanelContainer2"]
 margin_top = -3.99164
 margin_right = 26.0
 margin_bottom = 18.0084
@@ -200,20 +211,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer3" type="ColorRect" parent="HBoxContainer"]
-margin_left = 86.0
-margin_right = 125.0
+[node name="PanelContainer3" type="ColorRect" parent="ColorRect/HBoxContainer"]
+margin_left = 90.0
+margin_right = 131.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
 color = Color( 0.12549, 0.141176, 0.192157, 1 )
 
-[node name="InventorySprite3" type="Sprite" parent="HBoxContainer/PanelContainer3"]
+[node name="InventorySprite3" type="Sprite" parent="ColorRect/HBoxContainer/PanelContainer3"]
 position = Vector2( 20, 21 )
 texture = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer3"]
+[node name="Label" type="Label" parent="ColorRect/HBoxContainer/PanelContainer3"]
 margin_top = -3.99164
 margin_right = 26.0
 margin_bottom = 18.0084
@@ -224,20 +235,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer4" type="ColorRect" parent="HBoxContainer"]
-margin_left = 129.0
-margin_right = 168.0
+[node name="PanelContainer4" type="ColorRect" parent="ColorRect/HBoxContainer"]
+margin_left = 135.0
+margin_right = 176.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
 color = Color( 0.12549, 0.141176, 0.192157, 1 )
 
-[node name="InventorySprite4" type="Sprite" parent="HBoxContainer/PanelContainer4"]
+[node name="InventorySprite4" type="Sprite" parent="ColorRect/HBoxContainer/PanelContainer4"]
 position = Vector2( 20, 21 )
 texture = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer4"]
+[node name="Label" type="Label" parent="ColorRect/HBoxContainer/PanelContainer4"]
 margin_top = -3.99164
 margin_right = 26.0
 margin_bottom = 18.0084
@@ -248,20 +259,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer5" type="ColorRect" parent="HBoxContainer"]
-margin_left = 172.0
-margin_right = 211.0
+[node name="PanelContainer5" type="ColorRect" parent="ColorRect/HBoxContainer"]
+margin_left = 180.0
+margin_right = 221.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
 color = Color( 0.12549, 0.141176, 0.192157, 1 )
 
-[node name="InventorySprite5" type="Sprite" parent="HBoxContainer/PanelContainer5"]
+[node name="InventorySprite5" type="Sprite" parent="ColorRect/HBoxContainer/PanelContainer5"]
 position = Vector2( 20, 21 )
 texture = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer5"]
+[node name="Label" type="Label" parent="ColorRect/HBoxContainer/PanelContainer5"]
 margin_top = -3.99164
 margin_right = 26.0
 margin_bottom = 18.0084
@@ -272,20 +283,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer6" type="ColorRect" parent="HBoxContainer"]
-margin_left = 215.0
-margin_right = 254.0
+[node name="PanelContainer6" type="ColorRect" parent="ColorRect/HBoxContainer"]
+margin_left = 225.0
+margin_right = 266.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
 color = Color( 0.12549, 0.141176, 0.192157, 1 )
 
-[node name="InventorySprite6" type="Sprite" parent="HBoxContainer/PanelContainer6"]
+[node name="InventorySprite6" type="Sprite" parent="ColorRect/HBoxContainer/PanelContainer6"]
 position = Vector2( 20, 21 )
 texture = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer6"]
+[node name="Label" type="Label" parent="ColorRect/HBoxContainer/PanelContainer6"]
 margin_top = -3.99164
 margin_right = 26.0
 margin_bottom = 18.0084
@@ -296,20 +307,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer7" type="ColorRect" parent="HBoxContainer"]
-margin_left = 258.0
-margin_right = 297.0
+[node name="PanelContainer7" type="ColorRect" parent="ColorRect/HBoxContainer"]
+margin_left = 270.0
+margin_right = 311.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
 color = Color( 0.12549, 0.141176, 0.192157, 1 )
 
-[node name="InventorySprite7" type="Sprite" parent="HBoxContainer/PanelContainer7"]
+[node name="InventorySprite7" type="Sprite" parent="ColorRect/HBoxContainer/PanelContainer7"]
 position = Vector2( 20, 21 )
 texture = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer7"]
+[node name="Label" type="Label" parent="ColorRect/HBoxContainer/PanelContainer7"]
 margin_top = -3.99164
 margin_right = 26.0
 margin_bottom = 18.0084
@@ -320,20 +331,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer8" type="ColorRect" parent="HBoxContainer"]
-margin_left = 301.0
-margin_right = 340.0
+[node name="PanelContainer8" type="ColorRect" parent="ColorRect/HBoxContainer"]
+margin_left = 315.0
+margin_right = 356.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
 color = Color( 0.12549, 0.141176, 0.192157, 1 )
 
-[node name="InventorySprite8" type="Sprite" parent="HBoxContainer/PanelContainer8"]
+[node name="InventorySprite8" type="Sprite" parent="ColorRect/HBoxContainer/PanelContainer8"]
 position = Vector2( 20, 21 )
 texture = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer8"]
+[node name="Label" type="Label" parent="ColorRect/HBoxContainer/PanelContainer8"]
 margin_top = -3.99164
 margin_right = 26.0
 margin_bottom = 18.0084
@@ -344,20 +355,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer9" type="ColorRect" parent="HBoxContainer"]
-margin_left = 344.0
-margin_right = 384.0
+[node name="PanelContainer9" type="ColorRect" parent="ColorRect/HBoxContainer"]
+margin_left = 360.0
+margin_right = 402.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
 color = Color( 0.12549, 0.141176, 0.192157, 1 )
 
-[node name="InventorySprite9" type="Sprite" parent="HBoxContainer/PanelContainer9"]
+[node name="InventorySprite9" type="Sprite" parent="ColorRect/HBoxContainer/PanelContainer9"]
 position = Vector2( 20, 21 )
 texture = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer9"]
+[node name="Label" type="Label" parent="ColorRect/HBoxContainer/PanelContainer9"]
 margin_top = -3.99164
 margin_right = 26.0
 margin_bottom = 18.0084
