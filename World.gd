@@ -29,8 +29,13 @@ func _process(_delta):
 		spawn_count = 20
 		$SpawnTimer.stop()
 		$PreperationTimer.start()
-		
+	else:
+		$HUD/StatusLabel.text = "Enemys remaining: " + str($DNAs.get_child_count())
+	
+	# Disable player input when in menu	
 	$Player.input_enabled = !$HUD.in_menu()
+	
+	# Cheats
 	if Input.is_action_just_pressed("cheat_give_protein"):
 		update_protein(protein + 100)
 
