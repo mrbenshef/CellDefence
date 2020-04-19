@@ -14,7 +14,7 @@
 - [x] Proper turret placement (no overlapping)
 - [ ] Flame thrower turret
 - [x] Tripple shot upgrade
-- [ ] Piercing bullet upgrade
+- [x] Piercing bullet upgrade
 - [ ] Speed boost upgrade
 - [ ] Magnet upgrade
 - [x] Build arena

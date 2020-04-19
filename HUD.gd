@@ -39,12 +39,17 @@ func in_menu():
 func set_shop_label(text):
 	$Shop/ShopLabel.text = text
 
-func add_shop_button(text, key):
+func add_shop_button(text, key, enabled):
 	var button : Button = ITEM_BUTTON.instance()
 	button.text = text
+	button.disabled = !enabled
 	button.connect("pressed", self, "_on_item_button_pressed", [key])
 	$Shop/ScrollContainer/GridContainer.add_child(button)
 
+func clear_shop_buttons():
+	for button in $Shop/ScrollContainer/GridContainer.get_children():
+		button.queue_free()
+		
 func _on_item_button_pressed(key):
 	emit_signal("store_purchase", key)
 

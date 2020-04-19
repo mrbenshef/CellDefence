@@ -153,12 +153,15 @@ func _on_SpawnTimer_timeout():
 func _on_Player_protein_pickup():
 	update_protein(protein + 1)
 
+func add_nucleaus_shop_buttons():
+	$HUD.add_shop_button("Turret (40pp)", "turret", true)
+	$HUD.add_shop_button("Left Gun (40pp)", "left_gun", !$Player.guns_unlocked[0])
+	$HUD.add_shop_button("Right Gun (40pp)", "right_gun", !$Player.guns_unlocked[2])
+	$HUD.add_shop_button("Pierce (100pp)", "pierce", !$Player.pierce_unlocked)
+	
 func _on_Nucleaus_open_nucleaus_shop():
 	$HUD.open_store()
-	$HUD.add_shop_button("Turret (40pp)", "turret")
-	$HUD.add_shop_button("Left Gun (40pp)", "left_gun")
-	$HUD.add_shop_button("Right Gun (40pp)", "right_gun")
-	$HUD.add_shop_button("Pierce (100pp)", "pierce")
+	add_nucleaus_shop_buttons()
 	
 func _on_HUD_store_purchase(key):
 	print("trying to purchase: ", key)
@@ -179,6 +182,8 @@ func _on_HUD_store_purchase(key):
 			if protein >= 40 && !$Player.pierce_unlocked:
 				update_protein(protein - 100)
 				$Player.pierce_unlocked = true
+	$HUD.clear_shop_buttons()
+	add_nucleaus_shop_buttons()
 
 func _on_Player_place_turret(pos, rot):
 	var turret = TURRET.instance()
