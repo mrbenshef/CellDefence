@@ -203,6 +203,8 @@ func _on_Player_place_turret(pos, rot):
 	add_child(turret)
 
 func _on_PreperationTimer_timeout():
+	for child in $Protein.get_children():
+		child.queue_free()
 	$SpawnTimer.start() # start round
 
 func _on_RestartButton_pressed():

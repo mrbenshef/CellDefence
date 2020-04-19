@@ -208,6 +208,8 @@ texture = ExtResource( 11 )
 [node name="mitocondria3" type="Sprite" parent="."]
 position = Vector2( -173.086, 312.248 )
 texture = ExtResource( 11 )
+
+[node name="Protein" type="Node" parent="."]
 [connection signal="inventory_update" from="Player" to="HUD" method="_on_Player_inventory_update"]
 [connection signal="place_turret" from="Player" to="." method="_on_Player_place_turret"]
 [connection signal="protein_pickup" from="Player" to="." method="_on_Player_protein_pickup"]

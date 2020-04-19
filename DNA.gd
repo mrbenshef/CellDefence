@@ -98,7 +98,7 @@ func _on_Area2D_body_entered(body):
 		
 		var protein = Protein.instance()
 		protein.position = position + peterb
-		get_tree().current_scene.add_child(protein)
+		get_tree().current_scene.get_node("Protein").add_child(protein)
 	
 	queue_free()
 
