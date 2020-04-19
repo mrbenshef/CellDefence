@@ -67,16 +67,19 @@ func _physics_process(delta):
 				collision.collider.damage(1)
 				$AttackCooldownTimer.start() # stops attack until cooldown elapsed
 		
-		# Bounce off object
-		velocity = collision.normal * BOUNCE	
+			# Bounce off object
+			velocity = collision.normal * BOUNCE	
 		
 		if target != collision.collider.position:
-			# We bumped into somthing, ATTACK!
-			print("DNA, new target")
-			var new_target = collision.collider.position
-			set_target(new_target)
-			break
-			
+			if collision.collider.is_in_group("damageable"):
+				# We bumped into somthing, ATTACK!
+				print("DNA, new target")
+				var new_target = collision.collider.position
+				set_target(new_target)
+				break
+			else:
+				target_offset += Vector2.LEFT * 20
+				pass
 			
 func set_target(new_target):
 	target = new_target

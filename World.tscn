@@ -182,7 +182,7 @@ __meta__ = {
 }
 
 [node name="PreperationTimer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 5.0
 one_shot = true
 
 [node name="DNAs" type="Node2D" parent="."]
@@ -199,7 +199,7 @@ process_material = SubResource( 3 )
 texture = ExtResource( 9 )
 
 [node name="mitocondria" parent="." instance=ExtResource( 12 )]
-position = Vector2( -260.001, 192.632 )
+position = Vector2( 134.163, -54.5555 )
 
 [node name="mitocondria2" type="Sprite" parent="."]
 position = Vector2( -328.544, 391.173 )
