@@ -84,9 +84,6 @@ func set_held_item(idx):
 	state = PLACING
 
 func _process(delta):
-	if held_item != null:
-		print("held_item.is_colliding(): ", held_item.is_colliding())
-	
 	HUD.set_tooltip("", false)
 	
 	if !input_enabled:

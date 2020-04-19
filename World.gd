@@ -14,6 +14,7 @@ var game_active : bool = true
 var protein : int = 0
 
 func _ready():
+	randomize()
 	for i in range($VirusLandingZones.get_child_count()):
 		spawn_point_idxs.append(i)
 	start_round()
@@ -78,6 +79,9 @@ func start_round():
 		virus.land()
 
 func _process(_delta):
+	if !game_active:
+		return
+	
 	if !$PreperationTimer.is_stopped():
 		$HUD/StatusLabel.text = "Preperation: %.1f" % $PreperationTimer.time_left
 	elif spawn_count == 0 && $DNAs.get_child_count() == 0:
@@ -158,6 +162,6 @@ func _on_Nucleaus_nucleaus_dead():
 	game_active = false
 	$PreperationTimer.stop()
 	$SpawnTimer.stop()
-	$HUD/GameOverBox.visible = true
 	$Player.input_enabled = false
+	$HUD/GameOverBox.visible = true
 
