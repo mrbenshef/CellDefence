@@ -163,6 +163,7 @@ func add_nucleaus_shop_buttons():
 	
 func _on_Nucleaus_open_nucleaus_shop():
 	$HUD.open_store()
+	$HUD.set_shop_label("Nucleaus")
 	add_nucleaus_shop_buttons()
 	
 func _on_HUD_store_purchase(key):
@@ -217,3 +218,15 @@ func _on_Nucleaus_nucleaus_dead():
 	$SpawnTimer.stop()
 	$Player.input_enabled = false
 	$HUD/GameOverBox.visible = true
+
+func _on_Player_open_mitocondria_shop():
+	$HUD.open_store()
+	$HUD.set_shop_label("Mitocondria")
+	add_mitocondria_shop_buttons()
+
+func add_mitocondria_shop_buttons():
+	$HUD.add_shop_button("Left Gun (40pp)", "left_gun", !$Player.guns_unlocked[0])
+	$HUD.add_shop_button("Right Gun (40pp)", "right_gun", !$Player.guns_unlocked[2])
+	$HUD.add_shop_button("Pierce (100pp)", "pierce", !$Player.pierce_unlocked)
+	$HUD.add_shop_button("Damage (200pp)", "damage", $Player.bullet_damage == 1)
+	$HUD.add_shop_button("Damage2 (400pp)", "damage2", $Player.bullet_damage == 2)

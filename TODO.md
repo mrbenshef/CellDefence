@@ -16,7 +16,7 @@
 - [x] Piercing bullet upgrade
 - [ ] Magnet upgrade
 - [x] Build arena
-- [ ] Add mitocondria shops
+- [x] Add mitocondria shops
 - [x] Add virus "ships"
 - [x] Game loop
     - virus's land
@@ -34,3 +34,4 @@
 - [ ] Dialog boxes
     - Tutorial
     - "MITOCONDRIA ARE THE POWER HOUSE OF THE CELL"
+- [ ] Score calculation

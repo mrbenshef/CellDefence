@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/blood3.png" type="Texture" id=9]
 [ext_resource path="res://Virus.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/mitocondria.png" type="Texture" id=11]
+[ext_resource path="res://Mitocondria.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Gradient" id=1]
 
@@ -181,7 +182,7 @@ __meta__ = {
 }
 
 [node name="PreperationTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 30.0
 one_shot = true
 
 [node name="DNAs" type="Node2D" parent="."]
@@ -197,9 +198,8 @@ visibility_rect = Rect2( 0, 0, 2500, 2000 )
 process_material = SubResource( 3 )
 texture = ExtResource( 9 )
 
-[node name="mitocondria" type="Sprite" parent="."]
-position = Vector2( -216.135, 491.623 )
-texture = ExtResource( 11 )
+[node name="mitocondria" parent="." instance=ExtResource( 12 )]
+position = Vector2( -260.001, 192.632 )
 
 [node name="mitocondria2" type="Sprite" parent="."]
 position = Vector2( -328.544, 391.173 )
@@ -211,6 +211,7 @@ texture = ExtResource( 11 )
 
 [node name="Protein" type="Node" parent="."]
 [connection signal="inventory_update" from="Player" to="HUD" method="_on_Player_inventory_update"]
+[connection signal="open_mitocondria_shop" from="Player" to="." method="_on_Player_open_mitocondria_shop"]
 [connection signal="place_turret" from="Player" to="." method="_on_Player_place_turret"]
 [connection signal="protein_pickup" from="Player" to="." method="_on_Player_protein_pickup"]
 [connection signal="select_update" from="Player" to="HUD" method="_on_Player_select_update"]
@@ -223,5 +224,7 @@ texture = ExtResource( 11 )
 [connection signal="store_purchase" from="HUD" to="." method="_on_HUD_store_purchase"]
 [connection signal="pressed" from="HUD/GameOverBox/Button" to="." method="_on_RestartButton_pressed"]
 [connection signal="timeout" from="PreperationTimer" to="." method="_on_PreperationTimer_timeout"]
+[connection signal="mouse_entered" from="mitocondria" to="Player" method="_on_mitocondria_mouse_entered"]
+[connection signal="mouse_exited" from="mitocondria" to="Player" method="_on_mitocondria_mouse_exited"]
 
 [editable path="HUD"]

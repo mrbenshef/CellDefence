@@ -5,6 +5,7 @@ signal protein_pickup
 signal place_turret
 signal inventory_update
 signal select_update
+signal open_mitocondria_shop
 
 enum {
 	FLYING
@@ -39,6 +40,7 @@ var pierce_unlocked : bool = false
 var bullet_damage : int = 1
 
 var tooltip : String = ""
+var is_over_mitocondria : bool = false
 
 func _ready():
 	for _i in range(9):
@@ -91,13 +93,14 @@ func set_held_item(idx):
 	state = PLACING
 
 func _process(delta):
-	
 	if !input_enabled:
 		HUD.set_tooltip("", false)
 		return
 	else:
 		HUD.set_tooltip(tooltip, true)
 		
+	if Input.is_action_just_pressed("interact") && is_over_mitocondria:
+		emit_signal("open_mitocondria_shop")
 		
 	var mouse_pos = get_local_mouse_position()
 	var is_valid_placement_position : bool = false
@@ -197,4 +200,14 @@ func _on_Nucleaus_mouse_entered():
 
 
 func _on_Nucleaus_mouse_exited():
+	tooltip = ""
+
+
+func _on_mitocondria_mouse_entered():
+	is_over_mitocondria = true
+	tooltip = "Mitocondria (press e)"
+
+
+func _on_mitocondria_mouse_exited():
+	is_over_mitocondria = false
 	tooltip = ""
