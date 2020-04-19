@@ -83,6 +83,9 @@ func set_target(new_target):
 	target_offset = Vector2(rand_range(-300, 300), rand_range(-300, 300))
 
 func _on_Area2D_body_entered(body):	
+	if !body.pierce:
+		body.queue_free()
+		
 	health -= 1
 	if health > 0:
 		return

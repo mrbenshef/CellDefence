@@ -126,8 +126,9 @@ func _process(_delta):
 	if Input.is_action_just_pressed("cheat_give_protein"):
 		update_protein(protein + 100)
 
-func _on_Player_shoot_bullet(pos, rot, velocity):
+func _on_Player_shoot_bullet(pos, rot, velocity, pierce):
 	var bullet : RigidBody2D = BULLET.instance()
+	bullet.pierce = pierce
 	bullet.position = pos
 	bullet.rotation = rot
 	bullet.linear_velocity = velocity + Vector2(cos(rot), sin(rot)) * 300
@@ -157,6 +158,7 @@ func _on_Nucleaus_open_nucleaus_shop():
 	$HUD.add_shop_button("Turret (40pp)", "turret")
 	$HUD.add_shop_button("Left Gun (40pp)", "left_gun")
 	$HUD.add_shop_button("Right Gun (40pp)", "right_gun")
+	$HUD.add_shop_button("Pierce (100pp)", "pierce")
 	
 func _on_HUD_store_purchase(key):
 	print("trying to purchase: ", key)
@@ -173,6 +175,10 @@ func _on_HUD_store_purchase(key):
 			if protein >= 40 && !$Player.guns_unlocked[2]:
 				update_protein(protein - 40)
 				$Player.guns_unlocked[2] = true
+		"pierce":
+			if protein >= 40 && !$Player.pierce_unlocked:
+				update_protein(protein - 100)
+				$Player.pierce_unlocked = true
 
 func _on_Player_place_turret(pos, rot):
 	var turret = TURRET.instance()

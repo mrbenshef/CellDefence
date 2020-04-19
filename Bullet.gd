@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+var pierce : bool = false
+
 func _ready():
 	$DespawnTimer.start()
 

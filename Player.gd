@@ -34,6 +34,7 @@ var inventory : Array = []
 
 onready var guns: Array = [$Gun1, $Gun2, $Gun3]
 var guns_unlocked: Array = [false, true, false]
+var pierce_unlocked : bool = false
 
 func _ready():
 	for _i in range(9):
@@ -124,7 +125,12 @@ func _process(delta):
 			FLYING:
 				for i in range(guns.size()):
 					if guns_unlocked[i]:
-						emit_signal("shoot_bullet", guns[i].global_position, rotation, velocity)
+						emit_signal(
+							"shoot_bullet", 
+							guns[i].global_position, 
+							rotation, velocity, 
+							pierce_unlocked
+						)
 			PLACING:
 				if held_item == null || !is_valid_placement_position:
 					return
