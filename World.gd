@@ -126,9 +126,10 @@ func _process(_delta):
 	if Input.is_action_just_pressed("cheat_give_protein"):
 		update_protein(protein + 100)
 
-func _on_Player_shoot_bullet(pos, rot, velocity, pierce):
+func _on_Player_shoot_bullet(pos, rot, velocity, pierce, damage):
 	var bullet : RigidBody2D = BULLET.instance()
 	bullet.pierce = pierce
+	bullet.damage = damage
 	bullet.position = pos
 	bullet.rotation = rot
 	bullet.linear_velocity = velocity + Vector2(cos(rot), sin(rot)) * 300
@@ -158,6 +159,7 @@ func add_nucleaus_shop_buttons():
 	$HUD.add_shop_button("Left Gun (40pp)", "left_gun", !$Player.guns_unlocked[0])
 	$HUD.add_shop_button("Right Gun (40pp)", "right_gun", !$Player.guns_unlocked[2])
 	$HUD.add_shop_button("Pierce (100pp)", "pierce", !$Player.pierce_unlocked)
+	$HUD.add_shop_button("Damage (200pp)", "damage", $Player.bullet_damage == 1)
 	
 func _on_Nucleaus_open_nucleaus_shop():
 	$HUD.open_store()
@@ -179,9 +181,13 @@ func _on_HUD_store_purchase(key):
 				update_protein(protein - 40)
 				$Player.guns_unlocked[2] = true
 		"pierce":
-			if protein >= 40 && !$Player.pierce_unlocked:
+			if protein >= 100 && !$Player.pierce_unlocked:
 				update_protein(protein - 100)
 				$Player.pierce_unlocked = true
+		"damage":
+			if protein >= 200 && $Player.bullet_damage == 1:
+				update_protein(protein - 200)
+				$Player.bullet_damage = 2
 	$HUD.clear_shop_buttons()
 	add_nucleaus_shop_buttons()
 

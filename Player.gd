@@ -35,6 +35,7 @@ var inventory : Array = []
 onready var guns: Array = [$Gun1, $Gun2, $Gun3]
 var guns_unlocked: Array = [false, true, false]
 var pierce_unlocked : bool = false
+var bullet_damage : int = 1
 
 func _ready():
 	for _i in range(9):
@@ -129,7 +130,8 @@ func _process(delta):
 							"shoot_bullet", 
 							guns[i].global_position, 
 							rotation, velocity, 
-							pierce_unlocked
+							pierce_unlocked,
+							bullet_damage
 						)
 			PLACING:
 				if held_item == null || !is_valid_placement_position:

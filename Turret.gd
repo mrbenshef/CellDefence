@@ -22,7 +22,7 @@ func _on_Cooldown_timeout():
 	var bullet_rotation = bullet_start.angle_to_point(target.global_position) + PI
 	
 	print("shooting at angle", bullet_rotation)
-	emit_signal("shoot_bullet", bullet_start, bullet_rotation, Vector2(0, 0), false)
+	emit_signal("shoot_bullet", bullet_start, bullet_rotation, Vector2(0, 0), false, 1)
 
 func damage(amount):
 	health -= amount

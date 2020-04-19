@@ -86,7 +86,7 @@ func _on_Area2D_body_entered(body):
 	if !body.pierce:
 		body.queue_free()
 		
-	health -= 1
+	health -= body.damage
 	if health > 0:
 		return
 		

@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 var pierce : bool = false
+var damage : int = 1
 
 func _ready():
 	$DespawnTimer.start()
