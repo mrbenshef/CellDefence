@@ -79,7 +79,8 @@ func _process(_delta):
 	elif spawn_count == 0 && $DNAs.get_child_count() == 0:
 		start_round()
 	else:
-		$HUD/StatusLabel.text = "Enemys remaining: " + str($DNAs.get_child_count())
+		var enemies = $DNAs.get_child_count() + spawn_count
+		$HUD/StatusLabel.text = "Enemys remaining: " + str(enemies)
 	
 	# Disable player input when in menu	
 	$Player.input_enabled = !$HUD.in_menu()
