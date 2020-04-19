@@ -136,6 +136,7 @@ func _process(delta):
 		match state:
 			FLYING:
 				for i in range(guns.size()):
+					$AudioStreamPlayer2D.play()
 					if guns_unlocked[i]:
 						emit_signal(
 							"shoot_bullet", 
