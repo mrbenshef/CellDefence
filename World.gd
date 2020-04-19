@@ -10,6 +10,7 @@ var spawn_point_idxs : Array = []
 var spawn_count : int = 0
 var round_number : int = 0
 var game_active : bool = true
+var current_shop : String = ""
 
 var protein : int = 0
 
@@ -153,18 +154,11 @@ func _on_SpawnTimer_timeout():
 func _on_Player_protein_pickup():
 	update_protein(protein + 1)
 
-func add_nucleaus_shop_buttons():
-	$HUD.add_shop_button("Turret (40pp)", "turret", true)
-	$HUD.add_shop_button("Left Gun (40pp)", "left_gun", !$Player.guns_unlocked[0])
-	$HUD.add_shop_button("Right Gun (40pp)", "right_gun", !$Player.guns_unlocked[2])
-	$HUD.add_shop_button("Pierce (100pp)", "pierce", !$Player.pierce_unlocked)
-	$HUD.add_shop_button("Damage (200pp)", "damage", $Player.bullet_damage == 1)
-	$HUD.add_shop_button("Damage2 (400pp)", "damage2", $Player.bullet_damage == 2)
-	
 func _on_Nucleaus_open_nucleaus_shop():
 	$HUD.open_store()
 	$HUD.set_shop_label("Nucleaus")
-	add_nucleaus_shop_buttons()
+	current_shop = "nucleaus"
+	add_shop_buttons()
 	
 func _on_HUD_store_purchase(key):
 	print("trying to purchase: ", key)
@@ -194,7 +188,7 @@ func _on_HUD_store_purchase(key):
 				update_protein(protein - 400)
 				$Player.bullet_damage = 3
 	$HUD.clear_shop_buttons()
-	add_nucleaus_shop_buttons()
+	add_shop_buttons()
 
 func _on_Player_place_turret(pos, rot):
 	var turret = TURRET.instance()
@@ -222,11 +216,17 @@ func _on_Nucleaus_nucleaus_dead():
 func _on_Player_open_mitocondria_shop():
 	$HUD.open_store()
 	$HUD.set_shop_label("Mitocondria")
-	add_mitocondria_shop_buttons()
+	current_shop = "mitocondria"
+	add_shop_buttons()
 
-func add_mitocondria_shop_buttons():
-	$HUD.add_shop_button("Left Gun (40pp)", "left_gun", !$Player.guns_unlocked[0])
-	$HUD.add_shop_button("Right Gun (40pp)", "right_gun", !$Player.guns_unlocked[2])
-	$HUD.add_shop_button("Pierce (100pp)", "pierce", !$Player.pierce_unlocked)
-	$HUD.add_shop_button("Damage (200pp)", "damage", $Player.bullet_damage == 1)
-	$HUD.add_shop_button("Damage2 (400pp)", "damage2", $Player.bullet_damage == 2)
+func add_shop_buttons():
+	match current_shop:
+		"mitocondria":
+			$HUD.add_shop_button("Left Gun (40pp)", "left_gun", !$Player.guns_unlocked[0])
+			$HUD.add_shop_button("Right Gun (40pp)", "right_gun", !$Player.guns_unlocked[2])
+			$HUD.add_shop_button("Pierce (100pp)", "pierce", !$Player.pierce_unlocked)
+			$HUD.add_shop_button("Damage (200pp)", "damage", $Player.bullet_damage == 1)
+			$HUD.add_shop_button("Damage2 (400pp)", "damage2", $Player.bullet_damage == 2)
+		"nucleaus":
+			$HUD.add_shop_button("Turret (40pp)", "turret", true)
+	
