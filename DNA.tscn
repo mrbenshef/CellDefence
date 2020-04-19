@@ -29,6 +29,7 @@ shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 rotation = -1.5708
+monitorable = false
 collision_mask = 2
 __meta__ = {
 "_edit_group_": true

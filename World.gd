@@ -5,19 +5,49 @@ export (PackedScene) var DNA
 export (PackedScene) var TURRET
 export (PackedScene) var VIRUS
 
-onready var spawnPoint : Vector2 = $SpawnPoint.position
 var viruses : Array = []
-var spawn_count : int = 1
+var spawn_point_idxs : Array = []
+var spawn_count : int = 0
 var round_number : int = 0
 
 var protein : int = 0
 
 func _ready():
+	for i in range($VirusLandingZones.get_child_count()):
+		spawn_point_idxs.append(i)
 	start_round()
+	
+func round_virus_count(r):
+	match r:
+		1: return 1
+		2: return 2
+		3: return 3
+		4: return 5
+		5: return 8
+		6: return 10
+		7: return 13
+		_: return $VirusLandingZones.get_child_count()
+	
+func round_spawn_count(r):
+	return r * 10
+	
+func round_spawn_interval(r):
+	match r:
+		1: return 0.5
+		2: return 0.4
+		3: return 0.35
+		4: return 0.32
+		5: return 0.31
+		6: return 0.3
+		_: return 0.25
 	
 func start_round():
 	round_number += 1
 	$HUD/RoundLabel.text = "Round: " + str(round_number)
+	
+	# Round settings
+	spawn_count = round_spawn_count(round_number)
+	$SpawnTimer.wait_time = round_spawn_interval(round_number)
 	
 	# Set preperation phase
 	$PreperationTimer.start()
@@ -28,14 +58,20 @@ func start_round():
 		viruses[i].launch()
 	viruses.clear()
 	
+	# Choose a random selection of spawn points
+	var spawn_points : Array = []
+	spawn_point_idxs.shuffle()
+	for i in range(round_virus_count(round_number)):
+		spawn_points.append(spawn_point_idxs[i])
+	
 	# Spawn new viruses
-	for position in $VirusLandingZones.get_children():
+	for i in spawn_points:
+		var position : Node2D = $VirusLandingZones.get_child(i)
 		var virus = VIRUS.instance()
 		virus.transform = position.transform
 		add_child(virus)
 		viruses.append(virus)
 		virus.land()
-	
 	
 func _process(_delta):
 	if !$PreperationTimer.is_stopped():
