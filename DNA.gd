@@ -7,16 +7,29 @@ export var ACCELERATION : int = 500
 export var FRICTION : int = 500
 export var BOUNCE : int = 100
 export var ROTATION_SPEED : int = 9.0
+export var MAX_MAX_HEALTH : int = 10
+
+var max_health = 100
+var health = max_health
+
+func set_max_health(h):
+	max_health = h
+	if health > h:
+		health = h
 
 var target = null
 var velocity : Vector2 = Vector2.ZERO
 
 func _ready():
-	$Sprite.modulate = Color(0.6, 0.2, 0.2, 1.0)
+	$Sprite.modulate = target_color(0)
 	add_to_group("dna")
-	pass
+	
+func target_color(h):
+	return lerp(Color(0.8, 0.2, 0.2, 1.0), Color(0.2, 0.2, 0.8, 1.0), h / float(MAX_MAX_HEALTH))
 
 func _process(delta):
+	$Sprite.modulate = lerp($Sprite.modulate, target_color(health), delta * 20)
+	
 	if (target - position).length() < 10.0:
 		queue_free()
 
@@ -64,7 +77,11 @@ func _physics_process(delta):
 func set_target(new_target):
 	target = new_target
 
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(body):	
+	health -= 1
+	if health > 0:
+		return
+		
 	for i in range(randi() % 4 + 1):
 		# Peterb the position, space them out a bit
 		var peterb : Vector2 = Vector2.ZERO
@@ -74,5 +91,5 @@ func _on_Area2D_body_entered(body):
 		var protein = Protein.instance()
 		protein.position = position + peterb
 		get_tree().current_scene.add_child(protein)
-		
+	
 	queue_free()

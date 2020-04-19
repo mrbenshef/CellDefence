@@ -13,7 +13,20 @@ var game_active : bool = true
 
 var protein : int = 0
 
+
+func color_lerp(c1 : Color, c2 : Color, t: float):
+	return Color(
+		lerp(c1.r, c2.r, t),
+		lerp(c1.g, c2.g, t),
+		lerp(c1.b, c2.b, t),
+		lerp(c1.a, c2.a, t)
+	)
+
+
 func _ready():
+	for i in range(10):
+		print(i/10, ": ", color_lerp(Color(0.8, 0.2, 0.2, 1.0), Color(0.2, 0.2, 0.8, 1.0), i/10))
+
 	randomize()
 	for i in range($VirusLandingZones.get_child_count()):
 		spawn_point_idxs.append(i)
@@ -42,6 +55,21 @@ func round_spawn_interval(r):
 		5: return 0.31
 		6: return 0.3
 		_: return 0.25
+	
+func round_dna_health(r):
+	match r:
+		1: return 1
+		2: return 2
+		3: return 2
+		4: return 3
+		5: return 3
+		6: return 3
+		7: return 4
+		8: return 4
+		9: return 4
+		10: return 4
+		11: return 4
+		_: return 5
 	
 func start_round():
 	if !game_active:
@@ -116,6 +144,7 @@ func _on_SpawnTimer_timeout():
 		var dna = DNA.instance()
 		dna.position = spawn_point
 		dna.set_target($Nucleaus.global_position)
+		dna.set_max_health(round_dna_health(round_number))
 		$DNAs.add_child(dna)
 		spawn_count -= 1
 
