@@ -19,6 +19,7 @@ export var BOUNCE : int = 300
 export var ROTATION_SMOOTHING : float = 0.1
 
 export (Texture) var TurretTexture : Texture
+export (PackedScene) var HeldItem
 
 onready var nucleaus_position = get_parent().get_node("Nucleaus").global_position
 onready var HUD = get_parent().get_node("HUD")
@@ -70,24 +71,22 @@ func set_held_item(idx):
 		state = FLYING
 		return
 	
-	# Fade sprite
-	var sprite : Sprite = Sprite.new()
-	sprite.texture = TurretTexture
-	sprite.modulate = Color(1.0, 1.0, 1.0, 0.5)
+	held_item_idx = idx
 	
-	# Set to cursor position
-	var node : Node2D = Node2D.new()
-	node.position = get_local_mouse_position()
-	
-	node.add_child(sprite)
-	add_child(node)
+	# instance HeldItem
+	held_item = HeldItem.instance()
+	held_item.set_texture(TurretTexture)
+	held_item.position = get_local_mouse_position()
+	held_item.set_collision_radius(60)
+	add_child(held_item)
 	
 	# move to PLACING mode
-	held_item = node
-	held_item_idx = idx
 	state = PLACING
 
 func _process(delta):
+	if held_item != null:
+		print("held_item.is_colliding(): ", held_item.is_colliding())
+	
 	HUD.set_tooltip("", false)
 	
 	if !input_enabled:
@@ -103,17 +102,16 @@ func _process(delta):
 		
 		# Check if we are in a valid spot
 		var too_close_to_nucleaus = (get_global_mouse_position() - nucleaus_position).length() < 300
+		var too_close_to_structure = held_item.is_colliding()
 		if too_close_to_nucleaus:
 			HUD.set_tooltip("to close to nucleaus!", true)
-		is_valid_placement_position = !too_close_to_nucleaus
+		elif too_close_to_structure:
+			HUD.set_tooltip("too close to existing structure", true) 
+		
+		is_valid_placement_position = !too_close_to_nucleaus && !too_close_to_structure
 		
 		# Color green/red
-		var held_sprite : Sprite = held_item.get_child(0)
-		if is_valid_placement_position:
-			held_sprite.modulate = Color(0.0, 1.0, 0.0, 0.5)
-		else:
-			held_sprite.modulate = Color(1.0, 0.0, 0.0, 0.5)
-			
+		held_item.set_is_good_spot(is_valid_placement_position)
 		
 	# Select inventory item
 	for i in range(9):

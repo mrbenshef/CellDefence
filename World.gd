@@ -76,7 +76,7 @@ func start_round():
 		add_child(virus)
 		viruses.append(virus)
 		virus.land()
-	
+
 func _process(_delta):
 	if !$PreperationTimer.is_stopped():
 		$HUD/StatusLabel.text = "Preperation: %.1f" % $PreperationTimer.time_left

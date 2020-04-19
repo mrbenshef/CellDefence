@@ -12,7 +12,7 @@
 - [ ] Wall/sheild, while placing rotate towards player
 - [x] Proper turret placement (no overlapping)
 - [ ] Flame throer turret
-- [ ] Tripple shot upgrade
+- [x] Tripple shot upgrade
 - [ ] Piercing bullet upgrade
 - [ ] Speed boost upgrade
 - [ ] Magnet upgradew
