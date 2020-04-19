@@ -9,7 +9,6 @@ func _ready():
 	add_to_group("damageable")
 	$HealthBar.set_max_health(MAX_HEALTH)
 	$HealthBar.set_health(health)
-	pass
 
 func _on_Cooldown_timeout():
 	var targets = $RangeArea2D.get_overlapping_bodies()
