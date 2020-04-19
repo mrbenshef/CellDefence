@@ -7,28 +7,38 @@ export (PackedScene) var VIRUS
 
 onready var spawnPoint : Vector2 = $SpawnPoint.position
 var viruses : Array = []
-var spawn_count : int = 20
+var spawn_count : int = 1
+var round_number : int = 1
 
 var protein : int = 0
 
 func _ready():
+	start_round()
+	
+func start_round():
+	# Set preperation phase
+	$PreperationTimer.start()
+	$SpawnTimer.stop()
+	
+	# Remove viruses from previous round
+	for i in range(viruses.size()):
+		viruses[i].launch()
+	viruses.clear()
+	
+	# Spawn new viruses
 	for position in $VirusLandingZones.get_children():
 		var virus = VIRUS.instance()
 		virus.transform = position.transform
 		add_child(virus)
 		viruses.append(virus)
-		virus.launch()
-	$PreperationTimer.start()
-	$SpawnTimer.stop()
+		virus.land()
+	
 	
 func _process(_delta):
 	if !$PreperationTimer.is_stopped():
 		$HUD/StatusLabel.text = "Preperation: %.1f" % $PreperationTimer.time_left
 	elif spawn_count == 0 && $DNAs.get_child_count() == 0:
-		# get ready for next round
-		spawn_count = 20
-		$SpawnTimer.stop()
-		$PreperationTimer.start()
+		start_round()
 	else:
 		$HUD/StatusLabel.text = "Enemys remaining: " + str($DNAs.get_child_count())
 	
