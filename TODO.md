@@ -9,12 +9,12 @@
 
 - [x] Inventory system for buying turrets
 - [ ] Wall/sheild, while placing rotate towards player
-- [ ] Proper turret placement (no overlapping)
-- [ ] Flame thrower turret
+- [x] Proper turret placement (no overlapping)
+- [ ] Flame throer turret
 - [ ] Tripple shot upgrade
 - [ ] Piercing bullet upgrade
 - [ ] Speed boost upgrade
-- [ ] Magnet upgrade
+- [ ] Magnet upgradew
 - [x] Build arena
 - [ ] Add mitocondria shops
 - [x] Add virus "ships"

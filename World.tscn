@@ -58,6 +58,7 @@ position = Vector2( 52.6477, -183.338 )
 rotation = -0.338594
 scale = Vector2( 1, 1 )
 __meta__ = {
+"_edit_group_": true,
 "_gizmo_extents_": 78.0
 }
 
@@ -66,6 +67,106 @@ position = Vector2( 545.769, -384.204 )
 rotation = 0.26529
 scale = Vector2( 1, 1 )
 __meta__ = {
+"_edit_group_": true,
+"_gizmo_extents_": 78.0
+}
+
+[node name="3" type="Position2D" parent="VirusLandingZones"]
+position = Vector2( 264.165, -340.089 )
+rotation = -1.01753
+scale = Vector2( 1, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_gizmo_extents_": 78.0
+}
+
+[node name="4" type="Position2D" parent="VirusLandingZones"]
+position = Vector2( 831.297, -176.659 )
+rotation = 0.944223
+scale = Vector2( 1, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_gizmo_extents_": 78.0
+}
+
+[node name="5" type="Position2D" parent="VirusLandingZones"]
+position = Vector2( 1023.49, 117.518 )
+rotation = 1.03323
+scale = Vector2( 1, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_gizmo_extents_": 78.0
+}
+
+[node name="6" type="Position2D" parent="VirusLandingZones"]
+position = Vector2( 984.789, 569.263 )
+rotation = 1.94779
+scale = Vector2( 1, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_gizmo_extents_": 78.0
+}
+
+[node name="7" type="Position2D" parent="VirusLandingZones"]
+position = Vector2( 569.197, 847.051 )
+rotation = 3.18174
+scale = Vector2( 1, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_gizmo_extents_": 78.0
+}
+
+[node name="8" type="Position2D" parent="VirusLandingZones"]
+position = Vector2( -6.46272, 941.972 )
+rotation = 2.74017
+scale = Vector2( 1, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_gizmo_extents_": 78.0
+}
+
+[node name="9" type="Position2D" parent="VirusLandingZones"]
+position = Vector2( -496.534, 856.519 )
+rotation = 4.04044
+scale = Vector2( 1, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_gizmo_extents_": 78.0
+}
+
+[node name="10" type="Position2D" parent="VirusLandingZones"]
+position = Vector2( -694.794, 483.578 )
+rotation = 4.56404
+scale = Vector2( 1, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_gizmo_extents_": 78.0
+}
+
+[node name="11" type="Position2D" parent="VirusLandingZones"]
+position = Vector2( -743.764, 156.45 )
+rotation = 4.56404
+scale = Vector2( 1, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_gizmo_extents_": 78.0
+}
+
+[node name="12" type="Position2D" parent="VirusLandingZones"]
+position = Vector2( -618.383, -125.969 )
+rotation = 5.61821
+scale = Vector2( 1, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_gizmo_extents_": 78.0
+}
+
+[node name="13" type="Position2D" parent="VirusLandingZones"]
+position = Vector2( -281.682, -171.905 )
+rotation = 0.282743
+scale = Vector2( 1, 1 )
+__meta__ = {
+"_edit_group_": true,
 "_gizmo_extents_": 78.0
 }
 
