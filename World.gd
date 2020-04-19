@@ -119,12 +119,20 @@ func _on_Player_protein_pickup():
 	update_protein(protein + 1)
 
 func _on_Nucleaus_open_nucleaus_shop():
-	$HUD.open_nucleaus_store()
+	$HUD.open_store()
+	$HUD.add_shop_button("Turret (40pp)", "turret")
+	$HUD.add_shop_button("Turret2 (40pp)", "turret")
+	$HUD.add_shop_button("Turret3 (40pp)", "turret")
+	$HUD.add_shop_button("Turret4 (40pp)", "turret")
+	$HUD.add_shop_button("Turret5 (40pp)", "turret")
 
-func _on_HUD_nucleaus_store_heal():
-	if protein >= 40:
-		if $Player.add_to_inventory("turret"):
-			update_protein(protein - 40)
+func _on_HUD_store_purchase(key):
+	print("trying to purchase: ", key)
+	match key:
+		"turret":
+			if protein >= 40:
+				if $Player.add_to_inventory("turret"):
+					update_protein(protein - 40)
 
 func _on_Player_place_turret(pos, rot):
 	var turret = TURRET.instance()
@@ -146,3 +154,4 @@ func _on_Nucleaus_nucleaus_dead():
 	$SpawnTimer.stop()
 	$HUD/GameOverBox.visible = true
 	$Player.input_enabled = false
+

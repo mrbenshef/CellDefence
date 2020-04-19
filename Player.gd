@@ -20,7 +20,6 @@ export var ROTATION_SMOOTHING : float = 0.1
 
 export (Texture) var TurretTexture : Texture
 
-onready var Gun : Position2D = $Gun
 onready var nucleaus_position = get_parent().get_node("Nucleaus").global_position
 onready var HUD = get_parent().get_node("HUD")
 

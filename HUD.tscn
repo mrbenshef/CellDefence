@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://HUD.gd" type="Script" id=1]
-[ext_resource path="res://NucleausHUD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ItemButton.tscn" type="PackedScene" id=2]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
+ITEM_BUTTON = ExtResource( 2 )
 
 [node name="ProteinScore" type="Label" parent="."]
 margin_right = 40.0
@@ -23,7 +24,52 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NucleausHUD" parent="." instance=ExtResource( 2 )]
+[node name="Shop" type="ColorRect" parent="."]
+margin_left = 440.0
+margin_top = 106.699
+margin_right = 582.0
+margin_bottom = 254.699
+color = Color( 0.14902, 0.172549, 0.231373, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ShopLabel" type="Label" parent="Shop"]
+margin_right = 142.0
+margin_bottom = 28.0
+text = "Shop"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseButton" type="Button" parent="Shop"]
+margin_left = 130.552
+margin_top = -8.56935
+margin_right = 150.552
+margin_bottom = 11.4307
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Shop"]
+margin_left = 12.0
+margin_top = 28.0
+margin_right = 132.0
+margin_bottom = 138.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Shop/ScrollContainer"]
+margin_right = 120.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="StatusLabel" type="Label" parent="."]
 margin_top = 16.7739
@@ -78,6 +124,4 @@ margin_top = 45.7761
 margin_right = 88.8442
 margin_bottom = 65.7761
 text = "Restart"
-[connection signal="pressed" from="NucleausHUD/HealButton" to="." method="_on_HealButton_pressed"]
-
-[editable path="NucleausHUD"]
+[connection signal="pressed" from="Shop/CloseButton" to="." method="_on_CloseButton_pressed"]

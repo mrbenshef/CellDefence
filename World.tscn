@@ -183,7 +183,7 @@ one_shot = true
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="nucleaus_dead" from="Nucleaus" to="." method="_on_Nucleaus_nucleaus_dead"]
 [connection signal="open_nucleaus_shop" from="Nucleaus" to="." method="_on_Nucleaus_open_nucleaus_shop"]
-[connection signal="nucleaus_store_heal" from="HUD" to="." method="_on_HUD_nucleaus_store_heal"]
+[connection signal="store_purchase" from="HUD" to="." method="_on_HUD_store_purchase"]
 [connection signal="pressed" from="HUD/GameOverBox/Button" to="." method="_on_RestartButton_pressed"]
 [connection signal="timeout" from="PreperationTimer" to="." method="_on_PreperationTimer_timeout"]
 
