@@ -9,6 +9,7 @@ var viruses : Array = []
 var spawn_point_idxs : Array = []
 var spawn_count : int = 0
 var round_number : int = 0
+var game_active : bool = true
 
 var protein : int = 0
 
@@ -42,6 +43,9 @@ func round_spawn_interval(r):
 		_: return 0.25
 	
 func start_round():
+	if !game_active:
+		return
+		
 	round_number += 1
 	$HUD/RoundLabel.text = "Round: " + str(round_number)
 	
@@ -110,7 +114,6 @@ func _on_SpawnTimer_timeout():
 		dna.set_target($Nucleaus.global_position)
 		$DNAs.add_child(dna)
 		spawn_count -= 1
-		
 
 func _on_Player_protein_pickup():
 	update_protein(protein + 1)
@@ -132,3 +135,14 @@ func _on_Player_place_turret(pos, rot):
 
 func _on_PreperationTimer_timeout():
 	$SpawnTimer.start() # start round
+
+func _on_RestartButton_pressed():
+	get_tree().reload_current_scene()
+
+func _on_Nucleaus_nucleaus_dead():
+	print("Game over :(")
+	game_active = false
+	$PreperationTimer.stop()
+	$SpawnTimer.stop()
+	$HUD/GameOverBox.visible = true
+	$Player.input_enabled = false

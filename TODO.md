@@ -4,6 +4,7 @@
 
 - [ ] Test with xbox controller
 - [ ] Remove cheats
+- [ ] Add ship velocity to bullets
 
 ## Minimum Viable Product
 
@@ -31,3 +32,4 @@
 
 - [ ] Minimap
 - [ ] Reasearch turrets and upgrades in nucleaes, buy/build elsewhere, research takes time
+- [ ] Scoreboard

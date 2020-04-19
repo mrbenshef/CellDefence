@@ -51,6 +51,33 @@ align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="GameOverBox" type="ColorRect" parent="."]
+margin_left = 248.12
+margin_top = 134.699
+margin_right = 368.12
+margin_bottom = 214.699
+color = Color( 0.14902, 0.172549, 0.231373, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverLabel" type="Label" parent="GameOverBox"]
+margin_left = 21.8929
+margin_top = 17.6938
+margin_right = 95.8929
+margin_bottom = 31.6938
+text = "Game over!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="GameOverBox"]
+margin_left = 31.8442
+margin_top = 45.7761
+margin_right = 88.8442
+margin_bottom = 65.7761
+text = "Restart"
 [connection signal="pressed" from="NucleausHUD/HealButton" to="." method="_on_HealButton_pressed"]
 
 [editable path="NucleausHUD"]

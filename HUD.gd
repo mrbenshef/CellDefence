@@ -5,6 +5,7 @@ signal nucleaus_store_heal
 func _ready():
 	$NucleausHUD.visible = false
 	$TooltipLabel.visible = false
+	$GameOverBox.visible = false
 
 func _process(delta):
 	$TooltipLabel.rect_position = get_viewport().get_mouse_position() + Vector2(10, 10)

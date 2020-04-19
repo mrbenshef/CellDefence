@@ -1,13 +1,15 @@
 extends StaticBody2D
 
 signal open_nucleaus_shop
+signal nucleaus_dead
 
 var is_mouse_over: bool = false
 
 export (int) var MAX_HEALTH = 1000
-var health : int = MAX_HEALTH
+var health : int
 
 func _ready():
+	health = MAX_HEALTH
 	add_to_group("damageable")
 	$HealthBar.set_max_health(MAX_HEALTH)
 	$HealthBar.set_health(health)
@@ -27,5 +29,5 @@ func _on_Nucleaus_mouse_exited():
 func damage(amount):
 	health -= amount
 	if health <= 0:
-		queue_free()
+		emit_signal("nucleaus_dead")
 	$HealthBar.set_health(health)
