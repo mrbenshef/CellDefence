@@ -121,11 +121,9 @@ func _on_Player_protein_pickup():
 func _on_Nucleaus_open_nucleaus_shop():
 	$HUD.open_store()
 	$HUD.add_shop_button("Turret (40pp)", "turret")
-	$HUD.add_shop_button("Turret2 (40pp)", "turret")
-	$HUD.add_shop_button("Turret3 (40pp)", "turret")
-	$HUD.add_shop_button("Turret4 (40pp)", "turret")
-	$HUD.add_shop_button("Turret5 (40pp)", "turret")
-
+	$HUD.add_shop_button("Left Gun (40pp)", "left_gun")
+	$HUD.add_shop_button("Right Gun (40pp)", "right_gun")
+	
 func _on_HUD_store_purchase(key):
 	print("trying to purchase: ", key)
 	match key:
@@ -133,6 +131,14 @@ func _on_HUD_store_purchase(key):
 			if protein >= 40:
 				if $Player.add_to_inventory("turret"):
 					update_protein(protein - 40)
+		"left_gun":
+			if protein >= 40 && !$Player.guns_unlocked[0]:
+				update_protein(protein - 40)
+				$Player.guns_unlocked[0] = true
+		"right_gun":
+			if protein >= 40 && !$Player.guns_unlocked[2]:
+				update_protein(protein - 40)
+				$Player.guns_unlocked[2] = true
 
 func _on_Player_place_turret(pos, rot):
 	var turret = TURRET.instance()

@@ -32,7 +32,7 @@ var held_item_idx : int = -1
 var inventory : Array = []
 
 onready var guns: Array = [$Gun1, $Gun2, $Gun3]
-var guns_unlocked: Array = [true, true, true]
+var guns_unlocked: Array = [false, true, false]
 
 func _ready():
 	for _i in range(9):
