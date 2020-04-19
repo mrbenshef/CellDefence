@@ -126,11 +126,11 @@ func _process(_delta):
 	if Input.is_action_just_pressed("cheat_give_protein"):
 		update_protein(protein + 100)
 
-func _on_Player_shoot_bullet(pos, rot):
+func _on_Player_shoot_bullet(pos, rot, velocity):
 	var bullet : RigidBody2D = BULLET.instance()
 	bullet.position = pos
 	bullet.rotation = rot
-	bullet.linear_velocity = Vector2(cos(rot), sin(rot)) * 300
+	bullet.linear_velocity = velocity + Vector2(cos(rot), sin(rot)) * 300
 	add_child(bullet)
 
 func update_protein(new_protein):

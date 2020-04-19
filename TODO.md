@@ -4,7 +4,7 @@
 
 - [ ] Test with xbox controller
 - [ ] Remove cheats
-- [ ] Add ship velocity to bullets
+- [x] Add ship velocity to bullets
 - [ ] Hide cell wall connection at top, put another line2d ontop?
 
 ## Minimum Viable Product
@@ -16,7 +16,7 @@
 - [x] Tripple shot upgrade
 - [ ] Piercing bullet upgrade
 - [ ] Speed boost upgrade
-- [ ] Magnet upgradew
+- [ ] Magnet upgrade
 - [x] Build arena
 - [ ] Add mitocondria shops
 - [x] Add virus "ships"

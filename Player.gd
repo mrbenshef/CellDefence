@@ -124,7 +124,7 @@ func _process(delta):
 			FLYING:
 				for i in range(guns.size()):
 					if guns_unlocked[i]:
-						emit_signal("shoot_bullet", guns[i].global_position, rotation)
+						emit_signal("shoot_bullet", guns[i].global_position, rotation, velocity)
 			PLACING:
 				if held_item == null || !is_valid_placement_position:
 					return
