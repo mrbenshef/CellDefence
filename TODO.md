@@ -19,7 +19,7 @@
 - [x] Build arena
 - [ ] Add mitocondria shops
 - [x] Add virus "ships"
-- [ ] Game loop
+- [x] Game loop
     - virus's land
     - 30 seconds to prepare
     - round begins
@@ -33,3 +33,4 @@
 - [ ] Minimap
 - [ ] Reasearch turrets and upgrades in nucleaes, buy/build elsewhere, research takes time
 - [ ] Scoreboard
+- [ ] Random level generation

@@ -26,8 +26,16 @@ texture = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Gun" type="Position2D" parent="."]
+[node name="Gun2" type="Position2D" parent="."]
 position = Vector2( 16.0578, 0 )
+rotation = 1.5708
+
+[node name="Gun1" type="Position2D" parent="."]
+position = Vector2( -2.9856, -14.4382 )
+rotation = 1.5708
+
+[node name="Gun3" type="Position2D" parent="."]
+position = Vector2( -3.00153, 14.4716 )
 rotation = 1.5708
 
 [node name="Camera2D" type="Camera2D" parent="."]
