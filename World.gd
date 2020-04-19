@@ -222,11 +222,11 @@ func _on_Player_open_mitocondria_shop():
 func add_shop_buttons():
 	match current_shop:
 		"mitocondria":
-			$HUD.add_shop_button("Left Gun (40pp)", "left_gun", !$Player.guns_unlocked[0])
-			$HUD.add_shop_button("Right Gun (40pp)", "right_gun", !$Player.guns_unlocked[2])
-			$HUD.add_shop_button("Pierce (100pp)", "pierce", !$Player.pierce_unlocked)
-			$HUD.add_shop_button("Damage (200pp)", "damage", $Player.bullet_damage == 1)
-			$HUD.add_shop_button("Damage2 (400pp)", "damage2", $Player.bullet_damage == 2)
+			$HUD.add_shop_button("Left Gun (40pp)", "left_gun", protein >= 40 && !$Player.guns_unlocked[0])
+			$HUD.add_shop_button("Right Gun (40pp)", "right_gun", protein >= 40 && !$Player.guns_unlocked[2])
+			$HUD.add_shop_button("Pierce (100pp)", "pierce", protein >= 100 && !$Player.pierce_unlocked)
+			$HUD.add_shop_button("Damage (200pp)", "damage", protein >= 200 && $Player.bullet_damage == 1)
+			$HUD.add_shop_button("Damage2 (400pp)", "damage2", protein >= 400 && $Player.bullet_damage == 2)
 		"nucleaus":
-			$HUD.add_shop_button("Turret (40pp)", "turret", true)
+			$HUD.add_shop_button("Turret (40pp)", "turret", protein >= 40)
 	
