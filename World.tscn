@@ -214,6 +214,8 @@ texture = ExtResource( 11 )
 [connection signal="select_update" from="Player" to="HUD" method="_on_Player_select_update"]
 [connection signal="shoot_bullet" from="Player" to="." method="_on_Player_shoot_bullet"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="mouse_entered" from="Nucleaus" to="Player" method="_on_Nucleaus_mouse_entered"]
+[connection signal="mouse_exited" from="Nucleaus" to="Player" method="_on_Nucleaus_mouse_exited"]
 [connection signal="nucleaus_dead" from="Nucleaus" to="." method="_on_Nucleaus_nucleaus_dead"]
 [connection signal="open_nucleaus_shop" from="Nucleaus" to="." method="_on_Nucleaus_open_nucleaus_shop"]
 [connection signal="store_purchase" from="HUD" to="." method="_on_HUD_store_purchase"]

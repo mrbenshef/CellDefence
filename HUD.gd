@@ -18,6 +18,10 @@ func _ready():
 func _process(delta):
 	$TooltipLabel.rect_position = get_viewport().get_mouse_position() + Vector2(10, 10)
 
+	if Input.is_action_just_pressed("ui_cancel"):
+		print("escape, closing store")
+		close_store()
+
 func set_protein_score(score):
 	$ProteinScore.text = "Protein Points: " + str(score)
 

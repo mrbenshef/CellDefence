@@ -13,7 +13,6 @@ var game_active : bool = true
 
 var protein : int = 0
 
-
 func color_lerp(c1 : Color, c2 : Color, t: float):
 	return Color(
 		lerp(c1.r, c2.r, t),
@@ -216,4 +215,3 @@ func _on_Nucleaus_nucleaus_dead():
 	$SpawnTimer.stop()
 	$Player.input_enabled = false
 	$HUD/GameOverBox.visible = true
-

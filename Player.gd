@@ -38,6 +38,8 @@ var guns_unlocked: Array = [false, true, false]
 var pierce_unlocked : bool = false
 var bullet_damage : int = 1
 
+var tooltip : String = ""
+
 func _ready():
 	for _i in range(9):
 		inventory.append("empty")
@@ -89,10 +91,13 @@ func set_held_item(idx):
 	state = PLACING
 
 func _process(delta):
-	HUD.set_tooltip("", false)
 	
 	if !input_enabled:
+		HUD.set_tooltip("", false)
 		return
+	else:
+		HUD.set_tooltip(tooltip, true)
+		
 		
 	var mouse_pos = get_local_mouse_position()
 	var is_valid_placement_position : bool = false
@@ -185,3 +190,11 @@ func _physics_process(delta):
 func _on_Magnet_body_entered(body):
 	emit_signal("protein_pickup")
 	body.set_target(self)
+
+
+func _on_Nucleaus_mouse_entered():
+	tooltip = "Nucleaus (press e)"
+
+
+func _on_Nucleaus_mouse_exited():
+	tooltip = ""
