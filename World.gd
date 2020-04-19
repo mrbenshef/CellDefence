@@ -161,6 +161,7 @@ func _on_Nucleaus_open_nucleaus_shop():
 	add_shop_buttons()
 	
 func _on_HUD_store_purchase(key):
+	$SelectAudio.play()
 	print("trying to purchase: ", key)
 	match key:
 		"turret":

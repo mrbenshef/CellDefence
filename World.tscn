@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Virus.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/mitocondria.png" type="Texture" id=11]
 [ext_resource path="res://Mitocondria.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/select.wav" type="AudioStream" id=13]
 
 [sub_resource type="Gradient" id=1]
 
@@ -210,6 +211,10 @@ position = Vector2( -173.086, 312.248 )
 texture = ExtResource( 11 )
 
 [node name="Protein" type="Node" parent="."]
+
+[node name="SelectAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
+volume_db = -20.0
 [connection signal="inventory_update" from="Player" to="HUD" method="_on_Player_inventory_update"]
 [connection signal="open_mitocondria_shop" from="Player" to="." method="_on_Player_open_mitocondria_shop"]
 [connection signal="place_turret" from="Player" to="." method="_on_Player_place_turret"]

@@ -103,8 +103,16 @@ func _on_Area2D_body_entered(body):
 		protein.position = position + peterb
 		get_tree().current_scene.get_node("Protein").add_child(protein)
 	
-	queue_free()
+	$AudioStreamPlayer2D.play()
+	$DeathTimer.start()
+	$Sprite.visible = false
+	$CollisionShape2D.disabled = true
+	$Area2D/CollisionShape2D.disabled = true
 
 
 func _on_SenseTimer_timeout():
 	target_offset *= 0.5
+
+
+func _on_DeathTimer_timeout():
+	queue_free()
