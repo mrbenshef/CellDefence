@@ -53,9 +53,5 @@ autostart = true
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 volume_db = -30.0
-
-[node name="DeathTimer" type="Timer" parent="."]
-wait_time = 0.3
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="SenseTimer" to="." method="_on_SenseTimer_timeout"]
-[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]

@@ -7,7 +7,7 @@ export var ACCELERATION : int = 500
 export var FRICTION : int = 500
 export var BOUNCE : int = 100
 export var ROTATION_SPEED : int = 9.0
-export var MAX_MAX_HEALTH : int = 10
+export var MAX_MAX_HEALTH : int = 5
 
 var max_health = 100
 var health = max_health
@@ -93,7 +93,7 @@ func _on_Area2D_body_entered(body):
 	if health > 0:
 		return
 		
-	for i in range(randi() % 4 + 1):
+	for i in range(randi() % 8 + 4):
 		# Peterb the position, space them out a bit
 		var peterb : Vector2 = Vector2.ZERO
 		peterb.x = rand_range(-5.0, 5.0)
@@ -104,15 +104,9 @@ func _on_Area2D_body_entered(body):
 		get_tree().current_scene.get_node("Protein").add_child(protein)
 	
 	$AudioStreamPlayer2D.play()
-	$DeathTimer.start()
-	$Sprite.visible = false
-	$CollisionShape2D.disabled = true
-	$Area2D/CollisionShape2D.disabled = true
+	queue_free()
 
 
 func _on_SenseTimer_timeout():
 	target_offset *= 0.5
 
-
-func _on_DeathTimer_timeout():
-	queue_free()

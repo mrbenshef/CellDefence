@@ -3,8 +3,6 @@ extends CanvasLayer
 export (PackedScene) var ITEM_BUTTON
 export (Texture) var TurretTexture
 
-onready var BlankTexture : Texture = Texture.new()
-
 export (Color) var DefaultColor
 export (Color) var SelectedColor
 
@@ -38,7 +36,7 @@ func _on_Player_inventory_update(inventory):
 			"turret":
 				sprite.texture = TurretTexture
 			_:
-				sprite.texture = BlankTexture
+				sprite.texture = null
 	
 func _on_Player_select_update(idx):
 	print("player select: ", idx)

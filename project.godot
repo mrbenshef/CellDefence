@@ -144,5 +144,6 @@ item_9={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_clear_color=Color( 0.0845947, 0.095021, 0.128906, 1 )
 environment/default_environment="res://default_env.tres"

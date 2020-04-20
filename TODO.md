@@ -5,7 +5,8 @@
 - [ ] Test with xbox controller
 - [ ] Remove cheats
 - [x] Add ship velocity to bullets
-- [ ] Hide cell wall connection at top, put another line2d ontop?
+- [x] Hide cell wall connection at top, put another line2d ontop?
+- [ ] Add sound effects to turret
 
 ## Minimum Viable Product
 

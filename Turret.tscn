@@ -22,7 +22,7 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 0.25
 autostart = true
 
 [node name="RangeArea2D" type="Area2D" parent="."]

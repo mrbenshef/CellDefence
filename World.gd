@@ -22,11 +22,7 @@ func color_lerp(c1 : Color, c2 : Color, t: float):
 		lerp(c1.a, c2.a, t)
 	)
 
-
 func _ready():
-	for i in range(10):
-		print(i/10, ": ", color_lerp(Color(0.8, 0.2, 0.2, 1.0), Color(0.2, 0.2, 0.8, 1.0), i/10))
-
 	randomize()
 	for i in range($VirusLandingZones.get_child_count()):
 		spawn_point_idxs.append(i)
@@ -35,16 +31,18 @@ func _ready():
 func round_virus_count(r):
 	match r:
 		1: return 1
-		2: return 2
-		3: return 3
-		4: return 5
-		5: return 8
-		6: return 10
-		7: return 13
+		2: return 1
+		3: return 2
+		4: return 2
+		5: return 3
+		6: return 4
+		7: return 5
+		8: return 6
+		9: return 8
 		_: return $VirusLandingZones.get_child_count()
 	
 func round_spawn_count(r):
-	return r * 10
+	return int(10 - 2.5 * r + 2.5 * r * r)
 	
 func round_spawn_interval(r):
 	match r:
@@ -91,13 +89,13 @@ func start_round():
 		viruses[i].launch()
 	viruses.clear()
 	
+	print(round_virus_count(round_number))
+	
 	# Choose a random selection of spawn points
 	var spawn_points : Array = []
 	spawn_point_idxs.shuffle()
-	#round_virus_count(round_number)
-	for i in range(11):
-		#spawn_points.append(spawn_point_idxs[i])
-		spawn_points.append(i)
+	for i in range(round_virus_count(round_number)):
+		spawn_points.append(spawn_point_idxs[i])
 	
 	# Spawn new viruses
 	for i in spawn_points:
@@ -192,15 +190,15 @@ func _on_HUD_store_purchase(key):
 		"magnet1":
 			if protein >= 100 && $Player.magnet_distance == 50:
 				update_protein(protein - 100)
-				$Player.set_magnet_distance(100)
+				$Player.set_magnet_distance(75)
 		"magnet2":	
-			if protein >= 200 && $Player.magnet_distance == 100:
+			if protein >= 200 && $Player.magnet_distance == 75:
 				update_protein(protein - 200)
-				$Player.set_magnet_distance(200)
+				$Player.set_magnet_distance(100)
 		"magnet3":	
-			if protein >= 400 && $Player.magnet_distance == 200:
+			if protein >= 400 && $Player.magnet_distance == 100:
 				update_protein(protein - 400)
-				$Player.set_magnet_distance(300)
+				$Player.set_magnet_distance(125)
 	$HUD.clear_shop_buttons()
 	add_shop_buttons()
 
